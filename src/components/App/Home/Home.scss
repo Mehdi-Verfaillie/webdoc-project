@@ -1,0 +1,35 @@
+@import '../../../variables.scss';
+
+.main-container {
+    position: relative;
+    color: $white;
+
+    .main-title {
+        // position: absolute;
+        padding-top: 120px;
+        text-align: center;
+        font-size: $title-mobile-size;
+        font-weight: $title-weight;
+        font-family: $title-font;
+        width: 100%;
+
+        .main-title-red {
+            color: $red;
+        }
+    }
+    .main-butterfly {
+        width: 380px;
+        height: 230px;
+        background: $red;
+        margin: 86px auto 45px auto;
+    }
+    .main-text {
+        width: 320px;
+        text-align: center;
+        margin: auto;
+        font-family: $speTips-font;
+        font-size: $speTips-mobile-size;
+        font-weight: $speTips-weight;
+
+    }
+}

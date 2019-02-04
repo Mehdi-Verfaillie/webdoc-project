@@ -1,0 +1,44 @@
+@import '../../variables.scss';
+
+html, body, #root, .App {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: rgba(0,0,0,0.8);
+  color: white;
+  position: relative;
+//   font-family: VT323, 'Courier New', Courier, monospace;
+}
+
+.dot {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+}
+
+// .input {
+//   border-radius: 50px;
+//   border: none;
+//   padding: 10px 20px;
+//   margin: 0 auto 20px;
+//   outline: none;
+// }
+
+// .button {
+//   color: white;
+//   background: $red;
+//   border-radius: 50px;
+//   border: none;
+//   padding: 10px 40px;
+//   margin: 0 auto;
+//   text-transform: uppercase;
+//   text-decoration: none;
+// }
+
+// .flex { display: flex }
+// .flex-column { flex-direction: column }
+// .items-center { align-items: center }
+// .justify-center { justify-content: center }
+// .h100 { height: 100% }
