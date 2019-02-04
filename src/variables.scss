@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css?family=VT323');
+
+/**
+    * Variables --colors
+    ********************
+*/
+    $red: #F65858;
+    $white: #F8F8F8;
+    $black: #222222;
+    $purple-blue: #4830DA;
+    $light-blue: #59F4F4;
+    $yellow: #FFE660;
+    $green: #19C285;
+    $pink: #EE3FBD;
+
+/**
+    * Variables --fonts
+    *******************
+*/
+    /* --CHAOS */
+        $chaos-font: 'Century Gothic';
+        $chaos-weight: bold;
+        $chaos-size: 90px;
+
+    /* --titles */
+        $title-font: 'Century Gothic';
+        $title-weight: bold;
+        $title-desktop-size: 32px;
+        $title-mobile-size: 22px;
+
+
+    /* --texts */
+        $text-font: 'Century Gothic';
+        $text-weight: regular;
+        $text-desktop-size: 24px;
+        $text-mobile-size: 20px;
+
+    /* --buttons */
+        $btn-font: 'Century Gothic';
+        $btn-weight: 500;
+        $btn-size: 20px;
+
+    /* --inputs */
+        $btn-font: 'Century Gothic';
+        $btn-weight: regular;
+        $btn-desktop-size: 18px;
+        $btn-mobile-size: 16px;
+    
+    /* --Spe-text ********* */
+        $speText-font: 'VT323';
+        $speText-weight: regular;
+        $speText-desktop-size: 26px;
+        $speText-mobile-size: 22px;
+
+    /* --Spe-tips ********* */
+        $speTips-font: 'VT323';
+        $speTips-weight: regular;
+        $speTips-desktop-size: 22px;
+        $speTips-mobile-size: 20px;
