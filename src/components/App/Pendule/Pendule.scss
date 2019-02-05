@@ -1,0 +1,71 @@
+@import '../../../variables.scss';
+
+.pendule-main {
+    height: 100vh;
+    width: 100%;
+    background: $black;
+    
+    .pendule-text {
+        color: $white;
+        font-family: $text-font;
+        font-size: $text-desktop-size;
+        font-weight: $title-weight;
+        padding-top: 110px;
+        text-align: left;
+        width: 300px;
+        margin: auto;
+        margin-bottom: 40px;
+    }
+
+    .pendule-obj {
+        background: $purple-blue;
+        height: 380px;
+        width: 70%;
+        // margin-bottom: 40px;
+        margin: 0 auto 40px auto;
+    }
+
+    .pendule-text-spe {
+        margin-left: 20%;
+        font-family: $speTips-font;
+        font-size: $speTips-mobile-size;
+        color: $white;
+    }
+
+    .gearwheel-container {
+        display: none;
+        position: absolute;
+        height: 100vh;
+        width: 100%;
+        top: 0;
+
+        .gearwheel-img>img {
+            position: absolute;
+            width: 98px;
+        }
+        .gearwheel-img:nth-child(1)>img {
+            top: 122px;
+            left: 15px;
+        }
+        .gearwheel-img:nth-child(2)>img {
+            top: 84px;
+            left: 102px;
+        }
+        .gearwheel-img:nth-child(3)>img {
+            top: 233px;
+            right: 74px;
+        }
+        .gearwheel-img:nth-child(4)>img {
+            top: 273px;
+            right: 0px;
+        }
+        .gearwheel-img:nth-child(5)>img {
+            top: 465px;
+            left: 10px;
+        }
+        .gearwheel-img:nth-child(6)>img {
+            top: 450px;
+            left: 110px;
+        }
+    }
+}
