@@ -209,14 +209,10 @@ class Home extends Component {
 
 	render() {
 		return (
-			<div className="main-container">
-				<div
-					className="main-three"
-					
-				/>
-				<h1 className="main-title">ENIGMA OF <span className="main-title-red">WORD CHOSEN</span></h1>
-				<div className="main-butterfly" ref={mount => { this.mount = mount }}></div>
-				<div className="main-text">You must learn other paths to understand this one.</div>
+			<div className="home-main-container">
+				<h1 className="home-main-title">ENIGMA OF <span className="home-main-title-red">WORD CHOSEN</span></h1>
+				<div className="home-main-butterfly" ref={mount => { this.mount = mount }}></div>
+				<div className="home-main-text">You must learn other paths to understand this one.</div>
 			</div>
 		);
 	}

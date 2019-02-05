@@ -1,11 +1,12 @@
 @import '../../../variables.scss';
 
-.main {
+.intro-main {
     display: flex;
-    height: 100%;
+    height: 100vh;
     // background-image: url();
+    background: $black;
 
-    .main-container {
+    .intro-main-container {
         background-color: rgba(42, 42, 42, 0.4);
         width: 100%;
         height: 148px;
@@ -20,7 +21,7 @@
         justify-content: center;
         align-items: center;
 
-        .main-container-text {
+        .intro-main-container-text {
             padding: 35px 30px;
         }
     }

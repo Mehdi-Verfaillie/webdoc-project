@@ -1,16 +1,13 @@
 @import '../../../variables.scss';
 
-.main-container {
+.home-main-container {
     position: relative;
     color: $white;
+    background: $black;
+    height: 100vh;
+    width: 100%;
 
-    .main-three {
-        position: fixed;
-        display: block;
-        top: 0;
-    }
-
-    .main-title {
+    .home-main-title {
         // position: absolute;
         padding-top: 120px;
         text-align: center;
@@ -20,11 +17,13 @@
         width: 100%;
         margin: 0 auto;
 
-        .main-title-red {
+
+        .home-main-title-red {
             color: $red;
         }
     }
-    .main-butterfly {
+
+    .home-main-butterfly {
         width: 100%;
         // width: 380px;
         height: 230px;
@@ -32,12 +31,12 @@
         margin: 0;
         // margin: 86px auto 45px auto;
     }
-    .main-text {
+    .home-main-text {
         width: 320px;
         text-align: center;
         margin: auto;
         font-family: $speTips-font;
-        font-size: $speTips-mobile-size;
+        font-size: $speText-mobile-size;
         font-weight: $speTips-weight;
 
     }
