@@ -39,17 +39,27 @@ class Intro extends Component {
     }
     /**
      * Todo:
-        * Ajouter la font VT323 sur la sentence4
         * Changer le background - img sur chaque sentence
      */
     render() {
-        return(
-            <div className="intro-main" onClick={this.continue}>
-                <div className="intro-main-container">
-                    <p className="intro-main-container-text">{this.state.curr_sentence}</p>
+        if (this.state.curr_sentence === this.props.intro_sentence4) {
+            return(
+                <div className="intro-main" onClick={this.continue}>
+                    <div className="intro-main-container">
+                        <p className="intro-main-container-text" style={{fontFamily:'VT323'}}>{this.state.curr_sentence}</p>
+                    </div>
                 </div>
-            </div>
-        );
+            );
+        } else {
+            return(
+                <div className="intro-main" onClick={this.continue}>
+                    <div className="intro-main-container">
+                        <p className="intro-main-container-text">{this.state.curr_sentence}</p>
+                    </div>
+                </div>
+            );
+        }
+
     }
 }
 
