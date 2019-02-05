@@ -15,17 +15,21 @@
         font-weight: $title-weight;
         font-family: $title-font;
         width: 100%;
-        margin: 0;
+        margin: 0 auto;
+
 
         .home-main-title-red {
             color: $red;
         }
     }
+
     .home-main-butterfly {
-        width: 380px;
+        width: 100%;
+        // width: 380px;
         height: 230px;
-        background: $red;
-        margin: 86px auto 45px auto;
+        // background: $red;
+        margin: 0;
+        // margin: 86px auto 45px auto;
     }
     .home-main-text {
         width: 320px;
