@@ -4,6 +4,12 @@
     position: relative;
     color: $white;
 
+    .main-three {
+        position: fixed;
+        display: block;
+        top: 0;
+    }
+
     .main-title {
         // position: absolute;
         padding-top: 120px;
@@ -12,16 +18,19 @@
         font-weight: $title-weight;
         font-family: $title-font;
         width: 100%;
+        margin: 0 auto;
 
         .main-title-red {
             color: $red;
         }
     }
     .main-butterfly {
-        width: 380px;
+        width: 100%;
+        // width: 380px;
         height: 230px;
-        background: $red;
-        margin: 86px auto 45px auto;
+        // background: $red;
+        margin: 0;
+        // margin: 86px auto 45px auto;
     }
     .main-text {
         width: 320px;
