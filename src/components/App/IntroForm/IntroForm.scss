@@ -1,8 +1,8 @@
 @import '../../../variables.scss';
 
 .letter {
-      color: #ffffff;
-      font-family: 'Century Gothic';
+     color: $white;
+     font-family: 'Century Gothic';
      font-size: 80px;
      font-weight: 900;
 }
@@ -82,7 +82,7 @@
   color: $white;
   overflow: hidden;
   font-family: $speText-font;
-  border-right: .15em solid orange;
+  border-right: .15em solid $yellow;
   white-space: nowrap; 
   margin: 0 auto;
   letter-spacing: .15em;
@@ -128,12 +128,12 @@
 
 /*Button*/
 .button-response {
- background-color: #F65858;
+ background-color: $red;
  border-radius: 25px;
  border: none;
  box-shadow: 0 5px 0px 0px rgba(187,51,51,1);
  
- color: #ffffff;
+ color: $white;
  font-size: 14px;
  height: 3.5em;
  margin-top: 1em;
