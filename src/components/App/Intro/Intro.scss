@@ -1,10 +1,12 @@
 @import '../../../variables.scss';
 
+
+
 .intro-main {
     display: flex;
     height: 100vh;
     // background-image: url();
-    background: $black;
+    // background: $black;
     cursor: pointer;
 
     position: relative;
@@ -29,6 +31,10 @@
         display: flex;
         justify-content: center;
         align-items: center;
+
+        &.last {
+            color: red;
+        }
 
         .intro-main-container-text {
             padding: 35px 30px;

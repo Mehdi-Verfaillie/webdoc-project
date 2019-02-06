@@ -5,6 +5,9 @@ import './Intro.scss';
 import * as THREE from 'three';
 import { lerp } from 'canvas-sketch-util/math'
 import random from 'canvas-sketch-util/random'
+import { getContent } from '../api'
+import classNames from 'classnames'
+
 const glsl = require('glslify')
 
 class Intro extends Component {
@@ -13,6 +16,7 @@ class Intro extends Component {
 		super(props)
 		this.myRef = React.createRef()
 		this.state = {
+				content: [],
 				curr_sentence: this.props.intro_sentence1,
 		};
 	}
@@ -44,7 +48,15 @@ class Intro extends Component {
 			}
 	}
 
-	componentDidMount () {
+	async componentDidMount () {
+
+		const content = await getContent('intro')
+		this.setState({ content })
+
+
+
+
+
 		this.width = window.innerWidth
 		this.height = window.innerHeight
 
@@ -126,36 +138,25 @@ class Intro extends Component {
 	}
 
 	render () {
+		const { match: { params: { page } }, history } = this.props
+		const { content } = this.state
 
-	if (this.state.curr_sentence === this.props.intro_sentence4) {
-			return(
-					<div className="intro-main" onClick={this.continue}>
-						<div className='intro-three' ref={this.myRef} />
-							<div className="intro-main-container">
-									<p className="intro-main-container-text" style={{fontFamily:'VT323'}}>{this.state.curr_sentence}</p>
-							</div>
+		const index = parseInt(page) - 1
+		
+		return (
+			<div className="intro-main" onClick={() => history.push(`/intro/${index+2}`)}>
+					<div className='intro-three' ref={this.myRef} />
+					<div className={classNames('intro-main-container', { 'last': page === '4' })}>
+							<p className="intro-main-container-text">{content[index]}</p>
 					</div>
-			);
-	} else {
-			return(
-					<div className="intro-main" onClick={this.continue}>
-							<div className='intro-three' ref={this.myRef} />
-							<div className="intro-main-container">
-									<p className="intro-main-container-text">{this.state.curr_sentence}</p>
-							</div>
-					</div>
-			);
-		}
+			</div>
+		)
 	}
 }
 
 const mapStateToProps = (state) => {
     return {
         count: state.count,
-        intro_sentence1: state.intro_sentence1,
-        intro_sentence2: state.intro_sentence2,
-        intro_sentence3: state.intro_sentence3,
-        intro_sentence4: state.intro_sentence4
     }
 }
 
@@ -167,13 +168,5 @@ const mapDispatchToProps = (dispatch) => {
         set_count: (count) => { dispatch({type: 'SET_COUNT', value: count}) },
     }
 }
-
-Intro.propTypes = {
-    curr_sentence: PropTypes.string,
-    intro_sentence1: PropTypes.string,
-    intro_sentence2: PropTypes.string,
-    intro_sentence3: PropTypes.string,
-    intro_sentence4: PropTypes.string,
-};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Intro);
