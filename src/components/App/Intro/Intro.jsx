@@ -8,7 +8,7 @@ import random from 'canvas-sketch-util/random'
 const glsl = require('glslify')
 
 class Intro extends Component {
-
+  
 	constructor (props) {
 		super(props)
 		this.myRef = React.createRef()

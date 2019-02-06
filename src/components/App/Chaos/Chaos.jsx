@@ -22,7 +22,7 @@ class Chaos extends Component {
                             Votre navigateur ne gère pas l'élément <code>video</code>.
                         </video>
                     </div>
-                    <button className="button chaos-btn">BACK TO HOME</button>
+                    <button className="button-response chaos-btn">NEXT PATH</button>
                 </div>
             </div>
         );
