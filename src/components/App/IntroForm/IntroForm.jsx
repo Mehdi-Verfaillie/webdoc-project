@@ -20,7 +20,7 @@ class IntroForm extends Component {
 
      <div className="input-content">
         <input className="input" type="text" placeholder="Word chosen" required />
-                        <Link className="link-intro" to='/intro'> <button className="button-response" type="button">OK</button></Link>
+            <Link className="link-intro" to='/intro'> <button className="button-response" type="button">OK</button></Link>
      </div>
 
     </div>
