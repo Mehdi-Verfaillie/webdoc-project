@@ -26,12 +26,67 @@ class Home extends Component {
 		for (let i = 0; i < 2 * PI; i += PI / 36) {
 			positions.push(...getPosition(i))
 		}
+
+
+
+		this.loopVertexShader = glsl(/* glsl */`
+			attribute vec3 position;
+
+			uniform mat4 modelViewMatrix;
+			uniform mat4 projectionMatrix;
+			uniform vec3 cameraPosition;
+			uniform float time;
+
+
+			#pragma glslify: noise = require('glsl-noise/simplex/4d');
+
+
+			void main() {
+
+				float n = noise(vec4(
+						vec3(position) * 0.05,
+						time * 0.5
+				)) * 1.0;
+
+				vec3 newPosition = vec3(
+					position.x,
+					position.y + n,
+					position.z * 10.0
+				);
+
+
+				gl_Position = projectionMatrix * modelViewMatrix * vec4( newPosition, 1.0 );
+				gl_PointSize = 30.0;
+			}
+		`)
+
+		this.loopFragmentShader = glsl(/* glsl */`
+		precision highp float;
+
+
+		void main () {
+
+				vec2 coord = gl_PointCoord - vec2(0.5);
+				float dist = length(coord);
+
+				float alpha = smoothstep(0.5, 0.4, dist);
+
+				gl_FragColor = vec4(vec3(1.0), alpha);
+		}
+		`)
+
 		const geometry = new THREE.BufferGeometry()
 		geometry.addAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
-		const material = new THREE.LineBasicMaterial({ transparent: true, opacity: 0.5 })
+		// const material = new THREE.LineBasicMaterial({ transparent: true, opacity: 0.5 })
+		this.loopMaterial = new THREE.RawShaderMaterial({
+			uniforms: { time: { value: 0 } },
+			vertexShader: this.loopVertexShader,
+			fragmentShader: this.loopFragmentShader,
+			// transparent: true
+		})
 
 		this.loops = [...Array(6)].map(() => (
-			new THREE.Line(geometry, material)
+			new THREE.Line(geometry, this.loopMaterial)
 		))
 		this.loops.forEach((loop, i) => {
 			loop.position.set(0, -i*0.1, -i*0.2)
@@ -51,10 +106,26 @@ class Home extends Component {
 
 			varying vec3 vColor;
 
+			#pragma glslify: noise = require('glsl-noise/simplex/4d');
+
+
 			void main() {
+
+				float n = noise(vec4(
+						position.xyz,
+						0.0
+				)) * 10.0;
+
+				vec3 newPosition = vec3(
+					position.x,
+					position.y + n,
+					position.z
+				);
+
+
 				vColor = color;
-					gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
-					gl_PointSize = 30.0;
+				gl_Position = projectionMatrix * modelViewMatrix * vec4( newPosition, 1.0 );
+				gl_PointSize = 30.0;
 			}
 		`)
 		const fragmentShader = glsl(/* glsl */`
@@ -98,6 +169,7 @@ class Home extends Component {
 				offset
 			}
 		})
+		this.container = new THREE.Object3D()
 		this.spheres.forEach(({ sphere, text, offset }, i) => {
 			// sphere.position.set(...(!i ? [0, 0, 0.2] : getPosition(i, [0, 0, 0.2])))
 
@@ -108,9 +180,10 @@ class Home extends Component {
 			text.position.set(
 				...getPosition(offset, [1.5, -0.5, 0.2])
 			)
-			this.scene.add(sphere)
-			this.scene.add(text)
+			this.container.add(sphere)
+			this.container.add(text)
 		})
+		this.scene.add(this.container)
 
 
 
@@ -124,25 +197,6 @@ class Home extends Component {
 		this.mouse = new THREE.Vector2(1000, 1000)
 	}
 
-	componentDidMount() {
-		// this.width = this.mount.clientWidth
-		// this.height = this.mount.clientHeight
-
-		// this.scene = new THREE.Scene()
-		// this.camera = new THREE.PerspectiveCamera(75, this.width / this.height, 0.1, 1000)
-		// this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
-		// this.renderer.setSize(this.width, this.height)
-		// this.renderer.setClearColor(0x000000, 0)
-		// this.mount.appendChild(this.renderer.domElement)
-
-
-		// window.addEventListener('mousemove', this.onMouseMove, false)
-		// window.addEventListener('click', this.onMouseClick)
-
-		// if (!this.frameId) {
-		// 	this.frameId = requestAnimationFrame(this.animate)
-		// }
-	}
 	animate () {
 
 		// this.spheres.forEach(({ sphere, text, offset }, i) => {
@@ -154,6 +208,7 @@ class Home extends Component {
 		// 		...getPosition(this.count*0.005 + offset, [-2, -2, 0.2])
 		// 	)
 		// })
+		this.loopMaterial.uniforms.time.value = this.clock.getElapsedTime()
 
 		// this.sphere.position.set(
 		// 	...getPosition(this.count * 0.01)
@@ -167,7 +222,7 @@ class Home extends Component {
 
 
 		this.raycaster.setFromCamera(this.mouse, this.camera)
-		const intersects = this.raycaster.intersectObjects(this.scene.children)
+		const intersects = this.raycaster.intersectObjects(this.container.children)
 		
 		// this.spheres.forEach(sphere => sphere.material.color.set('white'))
 		document.body.style.cursor = ''
