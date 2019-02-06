@@ -5,6 +5,10 @@ html, body, #root, .App {
   margin: 0;
   overflow: hidden;
 }
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 canvas {
   display: block;
 }
@@ -20,4 +24,10 @@ body {
     z-index: 100;
     top: 25px;
     right: 25px;
+}
+@media (min-width: 1366px) {
+  .dot {
+    top: 50px;
+    right: 50px;
+  }
 }

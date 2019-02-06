@@ -1,10 +1,21 @@
 @import '../../../variables.scss';
 
+
+
 .intro-main {
     display: flex;
     height: 100vh;
     // background-image: url();
-    background: $black;
+    // background: $black;
+    cursor: pointer;
+
+    position: relative;
+    .intro-three {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
 
     .intro-main-container {
         background-color: rgba(42, 42, 42, 0.4);
@@ -21,8 +32,18 @@
         justify-content: center;
         align-items: center;
 
+        &.last {
+            color: red;
+        }
+
         .intro-main-container-text {
             padding: 35px 30px;
+        }
+    }
+    @media (min-width: 1366px) {
+        .intro-main-container {
+            height: 200px;
+            font-size: $text-desktop-size;
         }
     }
 }

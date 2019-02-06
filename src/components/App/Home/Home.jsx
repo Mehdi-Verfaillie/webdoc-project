@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import * as THREE from 'three';
 import './Home.scss';
-import { withRouter } from 'react-router-dom'
-import { lerp } from 'canvas-sketch-util/math'
-import fontJson from '../../../assets/vt323.json'
+import { withRouter } from 'react-router-dom';
+import { lerp } from 'canvas-sketch-util/math';
+import fontJson from '../../../assets/vt323.json';
 const glsl = require('glslify')
 
 
@@ -204,8 +204,6 @@ class Home extends Component {
 		window.removeEventListener('click', this.onMouseClick)
 		this.mount.removeChild(this.renderer.domElement)
 	}
-
-
 
 	render() {
 		return (
