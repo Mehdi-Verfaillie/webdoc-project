@@ -77,7 +77,6 @@
 
 /*Question*/
 .typewriter h1 {
-  font-weight: $speText-weight;
   font-size: $speText-mobile-size;
   color: $white;
   overflow: hidden;
@@ -87,15 +86,17 @@
   margin: 0 auto;
   letter-spacing: .15em;
   animation: 
- typing 3.5s steps(30, end),
- blink-caret .5s step-end infinite;
+  typing 3.5s steps(30, end),
+  blink-caret .5s step-end infinite;
 }
 
 .typewriter {
-  position: absolute;
-  top: 40%; 
-  left: 50%;
-  transform: translate(-50%, -50%);
+//   position: absolute;
+//   top: 40%; 
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+    width: 495px;
+    margin: 0 auto 17px auto;
 }
 
 /*Input*/
@@ -115,7 +116,10 @@
     height: 2.5em;
     outline: none;
     text-align: center;
-    width: 30em;
+    width: 335px;
+    @media (min-width: 1366px) {
+        width: 30em;
+    }
 }
 
 .input::placeholder {
