@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "canvas-sketch-util": "^1.6.0",
+    "glsl-noise": "^0.0.0",
     "glslify": "^7.0.0",
     "node-sass": "^4.11.0",
     "react": "^16.7.0",
