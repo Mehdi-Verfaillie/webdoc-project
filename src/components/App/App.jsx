@@ -12,6 +12,8 @@ import Home from './Home/Home';
 import Chaos from './Chaos/Chaos';
 import Pendule from './Pendule/Pendule';
 import Conclusion from './Conclusion/Conclusion';
+import Song from './Song/Song';
+
 
 class App extends Component {
   render() {
