@@ -128,17 +128,16 @@
 
 /*Button*/
 .button-response {
- background-color: $red;
- border-radius: 25px;
- border: none;
- box-shadow: 0 5px 0px 0px rgba(187,51,51,1);
- 
- color: $white;
- font-size: 14px;
- height: 3.5em;
- margin-top: 1em;
- outline: none;
- width: 6em;
+    background-color: $red;
+    border-radius: 25px;
+    border: none;
+    box-shadow: 0 5px 0px 0px rgba(187,51,51,1);
+    color: $white;
+    font-size: 14px;
+    height: 3.5em;
+    margin-top: 1em;
+    outline: none;
+    width: 6em;
 }
 
 .button-response:focus {
@@ -147,7 +146,7 @@
 }
 
 .link-intro {
- font-family: 'Source Sans Pro', sans-serif;
- font-size: $btn-size;
- text-decoration: none;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: $btn-size;
+    text-decoration: none;
 }

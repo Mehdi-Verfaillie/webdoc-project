@@ -205,8 +205,6 @@ class Home extends Component {
 		this.mount.removeChild(this.renderer.domElement)
 	}
 
-
-
 	render() {
 		return (
 			<div className="home-main-container">
