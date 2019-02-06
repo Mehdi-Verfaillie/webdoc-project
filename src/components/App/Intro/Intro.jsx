@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import './Intro.scss';
 import * as THREE from 'three';
 import { lerp } from 'canvas-sketch-util/math'
-import random from 'canvas-sketch-util/random'
+import random from 'canvas-sketch-util/random';
+
 const glsl = require('glslify')
 
 class Intro extends Component {
@@ -21,26 +22,26 @@ class Intro extends Component {
 			let count = this.props.count;
 			let sentence;
 			if (this.props.count <= 2) {
-					count++
-					switch (this.props.count) {
-							case 0:
-									this.props.set_count(count);
-									sentence = this.props.intro_sentence2;
-									break;
-							case 1:
-									this.props.set_count(count);
-									sentence = this.props.intro_sentence3;
-									break;
-							case 2:
-									this.props.set_count(count);
-									sentence = this.props.intro_sentence4;
-									break;
-							default:
-									break;
-					}
-					this.setState({
-							curr_sentence: sentence,
-					})
+				count++;
+				switch (this.props.count) {
+						case 0:
+								this.props.set_count(count);
+								sentence = this.props.intro_sentence2;
+								break;
+						case 1:
+								this.props.set_count(count);
+								sentence = this.props.intro_sentence3;
+								break;
+						case 2:
+								this.props.set_count(count);
+								sentence = this.props.intro_sentence4;
+								break;
+						default:
+								break;
+				}
+				this.setState({
+						curr_sentence: sentence,
+				})
 			}
 	}
 
@@ -131,18 +132,18 @@ class Intro extends Component {
 			return(
 					<div className="intro-main" onClick={this.continue}>
 						<div className='intro-three' ref={this.myRef} />
-							<div className="intro-main-container">
-									<p className="intro-main-container-text" style={{fontFamily:'VT323'}}>{this.state.curr_sentence}</p>
-							</div>
+						<div className="intro-main-container" style={{backgroundColor: 'transparent'}}>
+							<p className="intro-main-container-text" style={{fontFamily:'VT323'}}>{this.state.curr_sentence}</p>
+						</div>
 					</div>
 			);
 	} else {
 			return(
 					<div className="intro-main" onClick={this.continue}>
-							<div className='intro-three' ref={this.myRef} />
-							<div className="intro-main-container">
-									<p className="intro-main-container-text">{this.state.curr_sentence}</p>
-							</div>
+						<div className='intro-three' ref={this.myRef} />
+						<div className="intro-main-container">
+							<p className="intro-main-container-text">{this.state.curr_sentence}</p>
+						</div>
 					</div>
 			);
 		}
