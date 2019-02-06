@@ -19,11 +19,11 @@ class App extends Component {
         <img className="dot" src={dotSvg} alt="dot"/>
         <Router>
           <Fragment>
-            <Route exact path="/introForm" component={IntroForm}/>
-            <Route exact path="/intro" component={Intro}/>
+            <Route path="/introForm" component={IntroForm}/>
+            <Route path="/intro/:page" component={Intro}/>
             <Route exact path="/" component={Home}/>
-            <Route exact path="/chaos" component={Chaos}/>
-            <Route exact path="/pendule" component={Pendule}/>
+            <Route path="/chaos" component={Chaos}/>
+            <Route path="/pendule" component={Pendule}/>
           </Fragment>
         </Router>
       </div>

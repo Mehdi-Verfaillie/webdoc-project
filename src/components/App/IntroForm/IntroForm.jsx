@@ -25,7 +25,7 @@ class IntroForm extends Component {
                     <h1>What does the chaos theory means for you?</h1>
                     </div>
                     <input onBlur={() => {this.getAnswer();}} className='input' type='text' placeholder="Word chosen" maxLength="15"/>
-                    <Link className="link-intro" to='/intro'> <button className="button-response" type="button">OK</button></Link>
+                    <Link className="link-intro" to='/intro/1'> <button className="button-response" type="button">OK</button></Link>
                 </div>
             </div>
         </div> 
