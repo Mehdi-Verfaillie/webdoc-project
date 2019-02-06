@@ -4,6 +4,7 @@ import './Home.scss';
 import { withRouter } from 'react-router-dom';
 import { lerp } from 'canvas-sketch-util/math';
 import fontJson from '../../../assets/vt323.json';
+import ThreeContainer from '../ThreeContainer'
 const glsl = require('glslify')
 
 
@@ -20,17 +21,7 @@ function getPosition(i, offset = [0, 0, 0]) {
 
 class Home extends Component {
 
-	componentDidMount() {
-		this.width = this.mount.clientWidth
-		this.height = this.mount.clientHeight
-
-		this.scene = new THREE.Scene()
-		this.camera = new THREE.PerspectiveCamera(75, this.width / this.height, 0.1, 1000)
-		this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
-		this.renderer.setSize(this.width, this.height)
-		this.renderer.setClearColor(0x000000, 0)
-		this.mount.appendChild(this.renderer.domElement)
-
+	init () {
 		const positions = []
 		for (let i = 0; i < 2 * PI; i += PI / 36) {
 			positions.push(...getPosition(i))
@@ -59,27 +50,27 @@ class Home extends Component {
 			uniform vec3 color;
 
 			varying vec3 vColor;
-		  
-		  void main() {
+
+			void main() {
 				vColor = color;
-		    gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
-		    gl_PointSize = 30.0;
-		  }
+					gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+					gl_PointSize = 30.0;
+			}
 		`)
 		const fragmentShader = glsl(/* glsl */`
-		  precision highp float;
+			precision highp float;
 
 			varying vec3 vColor;
 
-		  void main () {
+			void main () {
 
-		    vec2 coord = gl_PointCoord - vec2(0.5);
-		    float dist = length(coord);
+					vec2 coord = gl_PointCoord - vec2(0.5);
+					float dist = length(coord);
 
-		    float alpha = smoothstep(0.5, 0.4, dist);
+					float alpha = smoothstep(0.5, 0.4, dist);
 
-		    gl_FragColor = vec4(vColor, alpha);
-		  }
+					gl_FragColor = vec4(vColor, alpha);
+			}
 		`)
 
 		const sphereGeometry = new THREE.BufferGeometry()
@@ -89,7 +80,7 @@ class Home extends Component {
 			fragmentShader,
 			transparent: true
 		})
-		
+
 		const font = new THREE.Font(fontJson)
 		this.spheres = [
 			{ text: '', 				initialColor: [1.0, 1.0, 1.0] 		 , offset: PI / 2	},
@@ -109,7 +100,7 @@ class Home extends Component {
 		})
 		this.spheres.forEach(({ sphere, text, offset }, i) => {
 			// sphere.position.set(...(!i ? [0, 0, 0.2] : getPosition(i, [0, 0, 0.2])))
-			
+
 			// text.position.set(...(!i ? [1.5, -0.5, 0.2] : getPosition(i, [1.5, -0.5, 0.2])))
 			sphere.position.set(
 				...getPosition(offset, [0, 0, 0.2])
@@ -131,25 +122,38 @@ class Home extends Component {
 		this.count = 0
 		this.raycaster = new THREE.Raycaster()
 		this.mouse = new THREE.Vector2(1000, 1000)
-
-		window.addEventListener('mousemove', this.onMouseMove, false)
-		window.addEventListener('click', this.onMouseClick)
-
-		if (!this.frameId) {
-			this.frameId = requestAnimationFrame(this.animate)
-		}
 	}
-	animate = () => {
 
-		this.spheres.forEach(({ sphere, text, offset }, i) => {
-			if (!i) return
-			sphere.position.set(
-				...getPosition(this.count*0.005 + offset, [0, 0, 0.2])
-			)
-			text.position.set(
-				...getPosition(this.count*0.005 + offset, [-2, -2, 0.2])
-			)
-		})
+	componentDidMount() {
+		// this.width = this.mount.clientWidth
+		// this.height = this.mount.clientHeight
+
+		// this.scene = new THREE.Scene()
+		// this.camera = new THREE.PerspectiveCamera(75, this.width / this.height, 0.1, 1000)
+		// this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
+		// this.renderer.setSize(this.width, this.height)
+		// this.renderer.setClearColor(0x000000, 0)
+		// this.mount.appendChild(this.renderer.domElement)
+
+
+		// window.addEventListener('mousemove', this.onMouseMove, false)
+		// window.addEventListener('click', this.onMouseClick)
+
+		// if (!this.frameId) {
+		// 	this.frameId = requestAnimationFrame(this.animate)
+		// }
+	}
+	animate () {
+
+		// this.spheres.forEach(({ sphere, text, offset }, i) => {
+		// 	if (!i) return
+		// 	sphere.position.set(
+		// 		...getPosition(this.count*0.005 + offset, [0, 0, 0.2])
+		// 	)
+		// 	text.position.set(
+		// 		...getPosition(this.count*0.005 + offset, [-2, -2, 0.2])
+		// 	)
+		// })
 
 		// this.sphere.position.set(
 		// 	...getPosition(this.count * 0.01)
@@ -183,14 +187,14 @@ class Home extends Component {
 		this.renderer.render(this.scene, this.camera)
 		this.frameId = window.requestAnimationFrame(this.animate)
 	}
-	onMouseMove = e => {
+	onMouseMove (e) {
 		this.mouse.x = ( ( e.clientX - this.renderer.domElement.offsetLeft ) / this.renderer.domElement.clientWidth ) * 2 - 1;
 		this.mouse.y = - ( ( e.clientY - this.renderer.domElement.offsetTop ) / this.renderer.domElement.clientHeight ) * 2 + 1;
 
 		this.offset.x = lerp(-2, 2, e.clientX / window.innerWidth)
 		this.offset.y = lerp(2, -2, e.clientY / window.innerHeight)
 	}
-	onMouseClick = e => {
+	onMouseClick (e) {
 		var intersects = this.raycaster.intersectObjects(this.scene.children);
 		const filteredIntersects = intersects.filter(intersect => intersect.object.material.type === 'RawShaderMaterial')
 		if (filteredIntersects.length) {
@@ -198,18 +202,19 @@ class Home extends Component {
 			this.props.history.push('/chaos')
 		}
 	}
-	componentWillUnmount() {
-		cancelAnimationFrame(this.frameId)
-		window.removeEventListener('mousemove', this.onMouseMove)
-		window.removeEventListener('click', this.onMouseClick)
-		this.mount.removeChild(this.renderer.domElement)
-	}
 
 	render() {
 		return (
 			<div className="home-main-container">
 				<h1 className="home-main-title">ENIGMA OF <span className="home-main-title-red">WORD CHOSEN</span></h1>
-				<div className="home-main-butterfly" ref={mount => { this.mount = mount }}></div>
+				<ThreeContainer
+					init={this.init}
+					animate={this.animate}
+					onMouseMove={this.onMouseMove}
+					onMouseClick={this.onMouseClick}
+					className='home-main-butterfly'
+				/>
+				{/* <div className="home-main-butterfly" ref={mount => { this.mount = mount }}></div> */}
 				<div className="home-main-text">You must learn other paths to understand this one.</div>
 			</div>
 		);
