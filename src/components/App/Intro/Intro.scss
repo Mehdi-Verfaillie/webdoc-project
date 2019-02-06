@@ -5,6 +5,7 @@
     height: 100vh;
     // background-image: url();
     background: $black;
+    cursor: pointer;
 
     .intro-main-container {
         background-color: rgba(42, 42, 42, 0.4);
@@ -23,6 +24,12 @@
 
         .intro-main-container-text {
             padding: 35px 30px;
+        }
+    }
+    @media (min-width: 1366px) {
+        .intro-main-container {
+            height: 200px;
+            font-size: $text-desktop-size;
         }
     }
 }

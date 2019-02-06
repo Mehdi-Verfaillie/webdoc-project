@@ -21,3 +21,9 @@ body {
     top: 25px;
     right: 25px;
 }
+@media (min-width: 1366px) {
+  .dot {
+    top: 50px;
+    right: 50px;
+  }
+}

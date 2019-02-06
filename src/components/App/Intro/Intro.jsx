@@ -45,7 +45,7 @@ class Intro extends Component {
         if (this.state.curr_sentence === this.props.intro_sentence4) {
             return(
                 <div className="intro-main" onClick={this.continue}>
-                    <div className="intro-main-container">
+                    <div className="intro-main-container" style={{backgroundColor:'transparent'}}>
                         <p className="intro-main-container-text" style={{fontFamily:'VT323'}}>{this.state.curr_sentence}</p>
                     </div>
                 </div>
