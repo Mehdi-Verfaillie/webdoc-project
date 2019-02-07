@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { getContent } from '../api'
 import '../Chaos/Chaos.scss'
+import './Impact.scss'
 import Waves from '../three/Waves'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -51,14 +52,12 @@ class Impact extends Component {
                       </video>
                   </div>
                   {isPageOne ? (
-                    <Link to={`/impact/${nextPage}`} className="button chaos-btn">Continue</Link>
+              <Link to={`/impact/${nextPage}`} > <button className="button chaos-btn">CONTINUE</button></Link>
                   ) : (
                     <Link
                         to='/'
-                        className="button chaos-btn"
                         onClick={this.setImpactCompleted}
-                    >
-                        Back to home
+                > <button className="button chaos-btn">BACK TO HOME</button>
                     </Link>
                   )}
               </div>
