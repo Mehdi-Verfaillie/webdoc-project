@@ -14,8 +14,6 @@ import Pendule from './Pendule/Pendule';
 import Conclusion from './Conclusion/Conclusion';
 import Song from './Song/Song';
 
-import Conclusion from './Conclusion/Conclusion';
-
 class App extends Component {
   render() {
     return (

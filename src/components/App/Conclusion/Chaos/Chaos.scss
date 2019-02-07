@@ -1,0 +1,117 @@
+@import '../../../variables.scss';
+
+.chaos-main {
+    background: $black;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+
+    .chaos-main-container {
+        position: relative;
+        display: inherit;
+        height: 100%;
+        width: 100%;
+        // display: none;
+
+        .chaos-back-text {
+            position: absolute;
+            font-family: $chaos-font;
+            font-size: $chaos-size;
+            font-weight: $chaos-weight;
+            letter-spacing: 4px;
+            color: $white;
+            opacity: 0.05;
+        }
+        .chaos-back-text:first-child {
+            top: 20px;
+            left: -20px;
+        }
+        .chaos-back-text:nth-child(2) {
+            right: 20px;
+            top: 210px;
+        }
+        .chaos-back-text:nth-child(3) {
+            left: -30px;
+            top: 390px;
+        }
+        .chaos-back-text:nth-child(4) {
+            right: 0;
+            bottom: 0px;
+        }
+        @media (min-width: 1366px) {
+            .chaos-back-text {
+                font-size: 150px;
+            }
+            .chaos-back-text:first-child {
+                top: 60px;
+                left: 10px;
+            }
+            .chaos-back-text:nth-child(2) {
+                right: 5px;
+                top: 210px;
+            }
+            .chaos-back-text:nth-child(3) {
+                left: -10px;
+                top: 390px;
+            }
+            .chaos-back-text:nth-child(4) {
+                right: 0;
+                bottom: -30px;
+            }
+        }
+    }
+
+    .chaos-snd-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: none;
+
+        .chaos-snd-text {
+            font-family: $chaos-font;
+            font-size: $chaos-size;
+            font-weight: $chaos-weight;
+            color: $white;
+            letter-spacing: 15px;
+            @media (min-width: 1366px) {
+                font-size: 150px;
+                letter-spacing: 35px;
+            }
+        }
+    }
+
+    .main-thd-container {
+        width: 100%;
+        display: block;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        display: none;
+        
+        .main-video-container {
+            border: 1px solid $white;
+            height: 232px;
+            width: 90%;
+            display: flex;
+            margin: 0 auto 50px auto;
+            @media (min-width: 1366px) {
+                width: 641px;
+                height: 406px;
+                background: $red;
+            }
+
+            video {
+                width: 100%;
+            }
+        }
+        .button-response {
+            width: auto;
+            padding: 0 45px;
+        }
+        .chaos-btn {
+            display: flex;
+            margin: auto;
+        }
+    }
+}
