@@ -11,8 +11,10 @@ import Intro from './Intro/Intro';
 import Home from './Home/Home';
 import Chaos from './Chaos/Chaos';
 import Pendule from './Pendule/Pendule';
+import Conclusion from './Conclusion/Conclusion';
 import Song from './Song/Song';
 
+import Conclusion from './Conclusion/Conclusion';
 
 class App extends Component {
   render() {
@@ -27,6 +29,7 @@ class App extends Component {
             <Route exact path="/" component={Home}/>
             <Route path="/chaos" component={Chaos}/>
             <Route path="/pendule" component={Pendule}/>
+            <Route path="/conclusion/:page" component={Conclusion} />
           </Fragment>
         </Router>
       </div>
