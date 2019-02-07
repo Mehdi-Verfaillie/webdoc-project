@@ -50,13 +50,13 @@ class Intro extends Component {
 	render () {
 		const { match: { params: { page } }, history } = this.props
 		const { content } = this.state
-
-		const index = parseInt(page) - 1
+		
+		const index = parseInt(page || 1) - 1
 		
 		return (
 			<div className="intro-main" onClick={() => history.replace(`/intro/${index+2}`)}>
 					<Waves className='intro-three' />
-					<div className={classNames('intro-main-container', { 'last': page === '4' })}>
+					<div className={classNames('intro-main-container bg-overlay', { 'last': page === '4' })}>
 						<p className="intro-main-container-text">{content[index]}</p>
 					</div>
 			<div className="dunes-background">

@@ -14,6 +14,7 @@ import Chaos from './Chaos/Chaos';
 import Pendule from './Pendule/Pendule';
 import Conclusion from './Conclusion/Conclusion';
 import Song from './Song/Song';
+import Impact from './Impact/Impact';
 
 class App extends Component {
     constructor(props) {
@@ -39,11 +40,12 @@ class App extends Component {
         <Router>
           <Fragment>
             <Route path="/introForm" component={IntroForm}/>
-            <Route path="/intro/:page" component={Intro}/>
+            <Route path="/intro/:page?" component={Intro}/>
             <Route exact path="/" component={Home}/>
             <Route path="/chaos" component={Chaos}/>
             <Route path="/pendule" component={Pendule}/>
-            <Route path="/conclusion/:page" component={Conclusion} />
+            <Route path="/conclusion/:page?" component={Conclusion} />
+            <Route path="/impact/:page?" component={Impact} />
           </Fragment>
         </Router>
       </div>
