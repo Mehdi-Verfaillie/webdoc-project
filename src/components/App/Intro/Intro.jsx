@@ -55,15 +55,18 @@ class Intro extends Component {
 		
 		return (
 			<div className="intro-main" onClick={() => history.replace(`/intro/${index+2}`)}>
+				{index === 3 ? (
 					<Waves className='intro-three' />
-					<div className={classNames('intro-main-container bg-overlay', { 'last': page === '4' })}>
-						<p className="intro-main-container-text">{content[index]}</p>
+				) : (
+					<div className="dunes-background">
+						<video autoPlay="true" loop="true" muted="true">
+							<source src={Dunes} type="video/mp4"></source>
+						</video>
 					</div>
-			<div className="dunes-background">
-					<video autoPlay="true" loop="true">
-				<source src={Dunes} type="video/mp4"></source>
-			</video>
-			</div>
+				)}
+				<div className={classNames('intro-main-container bg-overlay', { 'last': page === '4' })}>
+					<p className="intro-main-container-text">{content[index]}</p>
+				</div>
 			</div>
 		);
 	}
