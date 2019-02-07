@@ -4,6 +4,7 @@ import './Intro.scss';
 import { getContent } from '../api'
 import classNames from 'classnames'
 import Waves from '../three/Waves'
+import Dunes from '../../../assets/Dunes_intro_background.mp4'
 
 class Intro extends Component {
   
@@ -58,8 +59,13 @@ class Intro extends Component {
 					<div className={classNames('intro-main-container', { 'last': page === '4' })}>
 						<p className="intro-main-container-text">{content[index]}</p>
 					</div>
+			<div className="dunes-background">
+					<video autoPlay="true" loop="true">
+				<source src={Dunes} type="video/mp4"></source>
+			</video>
 			</div>
-		)
+			</div>
+		);
 	}
 }
 
