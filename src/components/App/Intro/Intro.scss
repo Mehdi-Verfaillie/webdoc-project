@@ -33,7 +33,8 @@
         align-items: center;
 
         &.last {
-            color: red;
+            font-family: $speText-font;
+            background: transparent;
         }
 
         .intro-main-container-text {

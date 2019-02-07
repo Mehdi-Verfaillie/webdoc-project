@@ -11,7 +11,7 @@
         display: inherit;
         height: 100%;
         width: 100%;
-        display: none;
+        // display: none;
 
         .chaos-back-text {
             position: absolute;
@@ -87,7 +87,7 @@
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        // display: none;
+        display: none;
         
         .main-video-container {
             border: 1px solid $white;

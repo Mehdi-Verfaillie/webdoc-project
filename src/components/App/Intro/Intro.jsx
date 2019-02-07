@@ -19,26 +19,26 @@ class Intro extends Component {
 			let count = this.props.count;
 			let sentence;
 			if (this.props.count <= 2) {
-					count++
-					switch (this.props.count) {
-							case 0:
-									this.props.set_count(count);
-									sentence = this.props.intro_sentence2;
-									break;
-							case 1:
-									this.props.set_count(count);
-									sentence = this.props.intro_sentence3;
-									break;
-							case 2:
-									this.props.set_count(count);
-									sentence = this.props.intro_sentence4;
-									break;
-							default:
-									break;
-					}
-					this.setState({
-							curr_sentence: sentence,
-					})
+				count++;
+				switch (this.props.count) {
+						case 0:
+								this.props.set_count(count);
+								sentence = this.props.intro_sentence2;
+								break;
+						case 1:
+								this.props.set_count(count);
+								sentence = this.props.intro_sentence3;
+								break;
+						case 2:
+								this.props.set_count(count);
+								sentence = this.props.intro_sentence4;
+								break;
+						default:
+								break;
+				}
+				this.setState({
+						curr_sentence: sentence,
+				})
 			}
 	}
 	async componentDidMount () {

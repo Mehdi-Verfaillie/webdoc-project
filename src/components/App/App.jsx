@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import {BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.scss';
-import dotSvg from '../../assets/dot_btn.svg'
+// import dotSvg from '../../assets/dot_btn.svg';
 
 /**
  * @Import Components
@@ -11,12 +11,15 @@ import Intro from './Intro/Intro';
 import Home from './Home/Home';
 import Chaos from './Chaos/Chaos';
 import Pendule from './Pendule/Pendule';
+import Song from './Song/Song';
+
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <img className="dot" src={dotSvg} alt="dot"/>
+        {/* <img className="dot" src={dotSvg} alt="dot"/> */}
+        <Song/>
         <Router>
           <Fragment>
             <Route path="/introForm" component={IntroForm}/>
