@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import './Intro.scss';
 import * as THREE from 'three';
@@ -7,6 +6,7 @@ import { lerp } from 'canvas-sketch-util/math'
 import random from 'canvas-sketch-util/random'
 import { getContent } from '../api'
 import classNames from 'classnames'
+import ThreeContainer from '../ThreeContainer'
 
 const glsl = require('glslify')
 
@@ -49,26 +49,14 @@ class Intro extends Component {
 	}
 
 	async componentDidMount () {
-
 		const content = await getContent('intro')
 		this.setState({ content })
+	}
 
-
-
-
-
-		this.width = window.innerWidth
-		this.height = window.innerHeight
-
-		this.scene = new THREE.Scene()
-		this.camera = new THREE.PerspectiveCamera(75, this.width / this.height, 0.1, 1000)
-		this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
-		this.renderer.setSize(this.width, this.height)
-		this.renderer.setClearColor('black')
-		this.myRef.current.appendChild(this.renderer.domElement)
+	init () {
 
 		const length = 100
-		
+
 		const geometry = new THREE.BufferGeometry()
 		const positions = []
 		for (let i = 0; i < length; i++) {
@@ -120,12 +108,9 @@ class Intro extends Component {
 		const object = new THREE.Points(geometry, material)
 
 		this.scene.add(object)
-
-		this.clock = new THREE.Clock()
-		this.animate()
 	}
 
-	animate = () => {
+	animate () {
 		const time = this.clock.getElapsedTime()
 		this.camera.position.set(
 			0,
@@ -144,8 +129,13 @@ class Intro extends Component {
 		const index = parseInt(page) - 1
 		
 		return (
-			<div className="intro-main" onClick={() => history.push(`/intro/${index+2}`)}>
-					<div className={classNames('intro-three', { 'last': page === '4'})} ref={this.myRef} />
+			<div className="intro-main" onClick={() => history.replace(`/intro/${index+2}`)}>
+					{/* <div className='intro-three' ref={this.myRef} /> */}
+					<ThreeContainer
+						init={this.init}
+						animate={this.animate}
+						className='intro-three'
+					/>
 					<div className={classNames('intro-main-container', { 'last': page === '4' })}>
 							<p className="intro-main-container-text">{content[index]}</p>
 					</div>
