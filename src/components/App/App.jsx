@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import {BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.scss';
 import dotSvg from '../../assets/dot_btn.svg'
-import BgSound from '../../assets/Ambiant-calm.mp3'
+import BgSound from '../../assets/audio_cut.mp3'
 
 /**
  * @Import Components
