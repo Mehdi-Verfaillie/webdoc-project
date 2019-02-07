@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import './IntroForm.scss';
 
@@ -52,10 +51,6 @@ const mapDispatchToProps = (dispatch) => {
     return {
         get_answer: (answer) => { dispatch({type: 'GET_ANSWER', value: answer}) },
     }
-}
-
-IntroForm.protoType = {
-    answer: PropTypes.string
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(IntroForm);

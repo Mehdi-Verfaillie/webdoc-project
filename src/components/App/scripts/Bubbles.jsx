@@ -2,6 +2,12 @@ import React, { Component } from 'react'
 import vis from 'vis'
 
 class Bubbles extends Component {
+    
+    constructor (props) {
+        super(props)
+        this.container = React.createRef()
+    }
+
      componentDidMount() {
         var nodes = new vis.DataSet([{
                 label: "Formulas",
@@ -81,9 +87,9 @@ class Bubbles extends Component {
      }
      render() {
          return(
-             <div id="bubbles" ref={this.container}></div>
+             <div id="bubbles" ref={this.container} />
          )
      }
 }
 
-export default Bubbles
+export default Bubbles 
