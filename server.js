@@ -20,15 +20,7 @@ Collection.remove({}).then(() => {
       'But what if all those patterns were to fall into chaos ?'
     ]
   })
-  Collection.create({
-    section: 'chance',
-    content: [
-      'chance',
-      'chance',
-      'chance',
-      'chance'
-    ]
-  })
+
 })
 
 

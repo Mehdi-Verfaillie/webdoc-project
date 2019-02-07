@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import * as THREE from 'three';
+import { withRouter } from 'react-router-dom';
 
 
 class ThreeContainer extends Component {
@@ -25,7 +26,7 @@ class ThreeContainer extends Component {
     this.camera = new THREE.PerspectiveCamera(75, this.width / this.height, 0.1, 1000)
     this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
     this.renderer.setSize(this.width, this.height)
-    this.renderer.setClearColor('black')
+    this.renderer.setClearColor('black', 0)
     this.ref.current.appendChild(this.renderer.domElement)
     this.clock = new THREE.Clock()
 
@@ -39,6 +40,7 @@ class ThreeContainer extends Component {
 
 
   componentWillUnmount () {
+    window.cancelAnimationFrame(this.frameId)
     window.removeEventListener('mousemove', this.onMouseMove)
     window.removeEventListener('click', this.onMouseClick)
   }
@@ -51,4 +53,4 @@ class ThreeContainer extends Component {
   }
 }
 
-export default ThreeContainer
+export default withRouter(ThreeContainer)
