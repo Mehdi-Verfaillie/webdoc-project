@@ -26,7 +26,6 @@ const rootReducer = (state = initState, action) => {
 
     if (action.type === 'SET_IMPACT_COMPLETED') {
         let new_status = action.value;
-        console.log('cacahuete', new_status)
         return {
             ...state,
             impactCompleted: new_status

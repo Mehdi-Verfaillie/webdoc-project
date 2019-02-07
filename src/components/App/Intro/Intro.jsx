@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import './Intro.scss';
 import { getContent } from '../api'
 import classNames from 'classnames'
-import Waves from '../three/Waves'
+import Waves from '../scripts/Waves'
 import Dunes from '../../../assets/Dunes_intro_background.mp4'
 
 class Intro extends Component {

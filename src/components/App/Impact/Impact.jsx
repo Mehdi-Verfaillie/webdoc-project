@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { getContent } from '../api'
 import '../Chaos/Chaos.scss'
-import Waves from '../three/Waves'
-import PropTypes from 'prop-types'
+import Waves from '../scripts/Waves'
 import { connect } from 'react-redux'
 
 /**
@@ -27,7 +26,6 @@ class Impact extends Component {
   }
 
   setImpactCompleted = () => {
-    console.log('cool')
     this.props.set_impactCompleted(true)
   }
 
@@ -37,7 +35,7 @@ class Impact extends Component {
 
     const index = parseInt(page) - 1
     const nextPage = parseInt(page) + 1
-
+    
     const isPageOne = index === 0
 
     
@@ -84,14 +82,9 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    console.log('pipi')
     return {
         set_impactCompleted: (impactCompleted) => { dispatch({type: 'SET_IMPACT_COMPLETED', value: impactCompleted}) },
     }
-}
-
-Impact.protoType = {
-    impactCompleted: PropTypes.bool
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Impact);
