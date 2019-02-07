@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { getContent } from '../api'
 import '../Chaos/Chaos.scss'
-import Waves from '../three/Waves'
+import Waves from '../scripts/Waves'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 

@@ -17,7 +17,7 @@ const defaultContent = {
     'Unfortunately, I have to tell you all of this is true. And yet, to be scared of chaos is pointless',
     'It’s woven into the basic laws of physics. And we really all have to accept it as a fact of life.',
     ''
-  ] 
+  ]
 }
 
 const getContent = async (section) => {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Home.scss';
-import Butterfly from '../three/Butterfly';
+import Butterfly from '../scripts/Butterfly';
 import { connect } from 'react-redux';
 
 class Home extends Component {

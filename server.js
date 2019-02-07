@@ -20,9 +20,6 @@ Collection.remove({}).then(() => {
       'But what if all those patterns were to fall into chaos ?'
     ]
   })
-<<<<<<< HEAD
-
-=======
   Collection.create({
     section: 'conclusion',
     content: [
@@ -32,7 +29,6 @@ Collection.remove({}).then(() => {
       'So, although I can confidently tell you that the future will be amazing I can also say, with scientific certainty That I have no idea what it holds.'
     ]
   })
->>>>>>> lea est cool
 })
 
 

@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import {BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.scss';
 import dotSvg from '../../assets/dot_btn.svg'
-import BgSound from '../../assets/audio_cut.mp3'
+import BgSound from '../../assets/audio/audio_cut.mp3'
 
 /**
  * @Import Components
@@ -42,7 +42,7 @@ class App extends Component {
             <Route path="/introForm" component={IntroForm}/>
             <Route path="/intro/:page?" component={Intro}/>
             <Route exact path="/" component={Home}/>
-            <Route path="/chaos" component={Chaos}/>
+            <Route path="/chaos/:page?" component={Chaos}/>
             <Route path="/pendule" component={Pendule}/>
             <Route path="/conclusion/:page?" component={Conclusion} />
             <Route path="/impact/:page?" component={Impact} />
