@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './Intro.scss';
-import * as THREE from 'three';
-import { lerp } from 'canvas-sketch-util/math'
-import random from 'canvas-sketch-util/random'
 import { getContent } from '../api'
 import classNames from 'classnames'
-import ThreeContainer from '../ThreeContainer'
-
-const glsl = require('glslify')
+import Waves from '../three/Waves'
 
 class Intro extends Component {
   
@@ -20,7 +15,6 @@ class Intro extends Component {
 				curr_sentence: this.props.intro_sentence1,
 		};
 	}
-
 	continue = () => {
 			let count = this.props.count;
 			let sentence;
@@ -47,79 +41,9 @@ class Intro extends Component {
 					})
 			}
 	}
-
 	async componentDidMount () {
 		const content = await getContent('intro')
 		this.setState({ content })
-	}
-
-	init () {
-
-		const length = 100
-
-		const geometry = new THREE.BufferGeometry()
-		const positions = []
-		for (let i = 0; i < length; i++) {
-			for (let j = 0; j < length; j++) {
-				const x = lerp(-length, length, i/length)
-				const z = lerp(-length, length, j/length)
-				const y = random.noise4D(
-					x / 4, 0, z,
-					0,
-					0.05, 5
-				)
-				positions.push( x, y, z )
-			}
-		}
-		geometry.addAttribute('position', new THREE.Float32BufferAttribute(positions, 3))
-
-		const vertexShader = glsl(/* glsl */`
-			attribute vec3 position;
-
-			uniform mat4 modelViewMatrix;
-			uniform mat4 projectionMatrix;
-			uniform vec3 cameraPosition;
-
-			void main() {
-				gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
-				gl_PointSize = 150.0 / length(cameraPosition - position);
-			}
-		`)
-		const fragmentShader = glsl(/* glsl */`
-			precision highp float;
-
-			void main () {
-
-				vec2 coord = gl_PointCoord - vec2(0.5);
-				float dist = length(coord);
-
-				float alpha = smoothstep(0.5, 0.0, dist);
-
-				gl_FragColor = vec4(vec3(1.0), alpha * 0.5);
-			}
-		`)
-		const material = new THREE.RawShaderMaterial({
-			vertexShader,
-			fragmentShader,
-			transparent: true,
-			blending: THREE.AdditiveBlending,
-			depthWrite: false
-		})
-		const object = new THREE.Points(geometry, material)
-
-		this.scene.add(object)
-	}
-
-	animate () {
-		const time = this.clock.getElapsedTime()
-		this.camera.position.set(
-			0,
-			10 + time,
-			10 + time
-		)
-		this.camera.lookAt(0, 0, 0)
-		this.renderer.render(this.scene, this.camera)
-		requestAnimationFrame(this.animate)
 	}
 
 	render () {
@@ -130,14 +54,9 @@ class Intro extends Component {
 		
 		return (
 			<div className="intro-main" onClick={() => history.replace(`/intro/${index+2}`)}>
-					{/* <div className='intro-three' ref={this.myRef} /> */}
-					<ThreeContainer
-						init={this.init}
-						animate={this.animate}
-						className='intro-three'
-					/>
+					<Waves className='intro-three' />
 					<div className={classNames('intro-main-container', { 'last': page === '4' })}>
-							<p className="intro-main-container-text">{content[index]}</p>
+						<p className="intro-main-container-text">{content[index]}</p>
 					</div>
 			</div>
 		)

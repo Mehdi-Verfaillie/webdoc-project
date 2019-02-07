@@ -4,9 +4,7 @@ import Butterfly from '../three/Butterfly'
 
 class Home extends Component {
 
-
 	render() {
-		const { history } = this.props
 		return (
 			<div className="home-main-container">
 				<h1 className="home-main-title">ENIGMA OF <span className="home-main-title-red">WORD CHOSEN</span></h1>
