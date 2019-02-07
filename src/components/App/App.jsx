@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import {BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.scss';
-// import dotSvg from '../../assets/dot_btn.svg';
+import dotSvg from '../../assets/dot_btn.svg'
+import BgSound from '../../assets/audio_cut.mp3'
 
 /**
  * @Import Components
@@ -15,11 +16,26 @@ import Conclusion from './Conclusion/Conclusion';
 import Song from './Song/Song';
 
 class App extends Component {
-  render() {
+    constructor(props) {
+        super(props);
+        this.state = { play : false};
+        this.sound = BgSound;
+        this.audio = new Audio(this.sound);
+        this.togglePlay = this.togglePlay.bind(this);
+
+    }
+
+    togglePlay(){
+        this.setState({play: !this.state.play});
+        console.log(this.audio);
+        this.state.play ? this.audio.play() : this.audio.pause();
+    }
+
+    render() {
     return (
       <div className="App">
-        {/* <img className="dot" src={dotSvg} alt="dot"/> */}
         <Song/>
+          <img className="dot" src={dotSvg} alt="dot" onClick={this.togglePlay}/>
         <Router>
           <Fragment>
             <Route path="/introForm" component={IntroForm}/>
