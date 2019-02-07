@@ -2,12 +2,11 @@ import React from 'react'
 import * as THREE from 'three';
 import ThreeContainer from '../ThreeContainer'
 import { lerp } from 'canvas-sketch-util/math';
-import fontJson from '../../../assets/vt323.json';
 const glsl = require('glslify')
-const { cos, sin, abs, PI } = Math
+const { cos, sin, PI } = Math
 
 
-const Butterfly = ({ className }) => {
+const Butterfly = ({ className, impactCompleted, chaosCompleted, chanceCompleted }) => {
   return (
     <ThreeContainer
       init={init}
@@ -15,6 +14,9 @@ const Butterfly = ({ className }) => {
       onMouseMove={onMouseMove}
       onMouseClick={onMouseClick}
       className={className}
+      impactCompleted={impactCompleted}
+      chaosCompleted={chaosCompleted}
+      chanceCompleted={chanceCompleted}
     />
   )
 }
@@ -30,7 +32,6 @@ function getPosition(i, offset = [0, 0, 0]) {
 
 function dot (text, isCenter, hover) {
   const size = 1000
-  const radius = isCenter ? 150 : 100
   const canvas = document.createElement('canvas')
   canvas.width = size
   canvas.height = size
@@ -147,43 +148,6 @@ function init () {
   })
 
 
-
-
-  const vertexShader = glsl(/* glsl */`
-    attribute vec3 position;
-
-    uniform mat4 modelViewMatrix;
-    uniform mat4 projectionMatrix;
-    uniform vec3 cameraPosition;
-    uniform vec3 color;
-    // uniform sampler2D texture;
-
-
-    varying vec3 vColor;
-    // varying sampler2D vTexture;
-
-    #pragma glslify: noise = require('glsl-noise/simplex/4d');
-
-
-    void main() {
-
-      float n = noise(vec4(
-          position.xyz,
-          0.0
-      )) * 10.0;
-
-      vec3 newPosition = vec3(
-        position.x,
-        position.y + n,
-        position.z
-      );
-
-      // vTexture = texture;
-      // vColor = color;
-      gl_Position = projectionMatrix * modelViewMatrix * vec4( newPosition, 1.0 );
-      gl_PointSize = 300.0;
-    }
-  `)
   const fragmentShader = glsl(/* glsl */`
     precision highp float;
     
@@ -224,12 +188,11 @@ function init () {
     depthWrite: false
   })
 
-  const font = new THREE.Font(fontJson)
   this.spheres = [
     { text: '', 				  link: '/conclusion' , initialColor: [1.0, 1.0, 1.0] 		 , size: 1.5,  initialAlpha: 0.4, offset: PI / 2	},
-    { text: 'chaos ?', 	  link: '/chaos' , initialColor: [0.964, 0.345, 0.345], size: 1,    initialAlpha: 1, offset: 2 	    },
-    { text: 'impact ?', 	link: '/impact' , initialColor: [0.964, 0.345, 0.345], size: 1,    initialAlpha: 1, offset: 4	    },
-    { text: 'chance ?', 	link: '/chance' , initialColor: [0.964, 0.345, 0.345], size: 1,    initialAlpha: 1, offset: 6 	    },
+    { text: 'chaos ?', 	  link: '/chaos' , initialColor: [0.964, 0.345, 0.345], size: 1,    initialAlpha: 0.6, offset: 2 	    },
+    { text: 'impact ?', 	link: '/impact' , initialColor: [0.964, 0.345, 0.345], size: 1,    initialAlpha: 0.6, offset: 4	    },
+    { text: 'chance ?', 	link: '/chance' , initialColor: [0.964, 0.345, 0.345], size: 1,    initialAlpha: 0.6, offset: 6 	    },
   ].map(({ text, initialColor, offset, size, initialAlpha, link }, i) => {
 
     const positions = [...getPosition(offset)]
@@ -283,7 +246,7 @@ function init () {
 }
 
 function animate () {
-  console.log('animate')
+  const { impactCompleted, chaosCompleted, chanceCompleted } = this.props
 
   // this.spheres.forEach(({ sphere, text, offset }, i) => {
   // 	if (!i) return
@@ -317,7 +280,17 @@ function animate () {
   // this.spheres.forEach(sphere => sphere.material.color.set('white'))
   document.body.style.cursor = ''
 
-  this.spheres.forEach(({ sphere, initialAlpha }) => sphere.material.uniforms.alpha.value = initialAlpha)
+
+  const alphaActive = [
+    impactCompleted && chaosCompleted && chanceCompleted,
+    chaosCompleted,
+    impactCompleted,
+    chanceCompleted
+  ]
+
+  this.spheres.forEach(({ sphere, initialAlpha }, i) => 
+    sphere.material.uniforms.alpha.value = alphaActive[i] ? 1.5 : initialAlpha
+  )
   // console.log(intersects)
   const filteredIntersects = intersects.filter(intersect => intersect.object.material.type === 'RawShaderMaterial')
   
@@ -326,7 +299,7 @@ function animate () {
     document.body.style.cursor = 'pointer'
     for (var i = 0; i < filteredIntersects.length; i++) {
       // filteredIntersects[i].object.material.color.set('yellow');
-      filteredIntersects[i].object.material.uniforms.alpha.value = 1.5
+      filteredIntersects[i].object.material.uniforms.alpha.value = 1
       // filteredIntersects[i].object.material.size = 15
       // filteredIntersects[i].object.material.uniforms.texture.value = dot('hi', false, true)
 

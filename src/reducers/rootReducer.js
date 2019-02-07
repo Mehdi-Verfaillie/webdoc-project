@@ -1,7 +1,11 @@
 /* Initialize the state of the project with default values */
 const initState = {
-    answer: '',
+    answer: 'CHAOS',
     count: 0,
+    impactCompleted: false,
+    chaosCompleted: false,
+    chanceCompleted: false
+
 }
 const rootReducer = (state = initState, action) => {
 
@@ -19,6 +23,32 @@ const rootReducer = (state = initState, action) => {
             count: new_count
         }
     }
+
+    if (action.type === 'SET_IMPACT_COMPLETED') {
+        let new_status = action.value;
+        console.log('cacahuete', new_status)
+        return {
+            ...state,
+            impactCompleted: new_status
+        }
+    }
+
+    if (action.type === 'SET_CHAOS_COMPLETED') {
+        let new_status = action.value;
+        return {
+            ...state,
+            chaosCompleted: new_status
+        }
+    }
+
+    if (action.type === 'SET_CHANCE_COMPLETED') {
+        let new_status = action.value;
+        return {
+            ...state,
+            chanceCompleted: new_status
+        }
+    }
+
 
     return state;
 }
