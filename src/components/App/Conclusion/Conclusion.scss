@@ -1,0 +1,25 @@
+
+@import '../../../variables.scss';
+
+body {
+  //  background-color: #232123;
+}
+
+
+#conclusion-content {
+    width: 80%;
+    margin: auto;
+}
+
+.video-content {
+    display: flex;
+    justify-content: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.last { 
+    font-family: $speText-font;
+}

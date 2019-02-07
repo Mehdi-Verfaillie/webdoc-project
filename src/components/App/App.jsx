@@ -12,6 +12,8 @@ import Intro from './Intro/Intro';
 import Home from './Home/Home';
 import Chaos from './Chaos/Chaos';
 import Pendule from './Pendule/Pendule';
+import Conclusion from './Conclusion/Conclusion';
+import Song from './Song/Song';
 
 class App extends Component {
     constructor(props) {
@@ -32,6 +34,7 @@ class App extends Component {
     render() {
     return (
       <div className="App">
+        <Song/>
           <img className="dot" src={dotSvg} alt="dot" onClick={this.togglePlay}/>
         <Router>
           <Fragment>
@@ -40,6 +43,7 @@ class App extends Component {
             <Route exact path="/" component={Home}/>
             <Route path="/chaos" component={Chaos}/>
             <Route path="/pendule" component={Pendule}/>
+            <Route path="/conclusion/:page" component={Conclusion} />
           </Fragment>
         </Router>
       </div>

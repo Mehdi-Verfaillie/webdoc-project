@@ -2,7 +2,7 @@
 
 .letter {
      color: $white;
-     font-family: 'Century Gothic';
+     font-family: $chaos-font;
      font-size: 80px;
      font-weight: 900;
 }
@@ -128,25 +128,6 @@
     font-size: $btn-mobile-size;
     text-align: center;
     font-weight: $btn-weight;
-}
-
-/*Button*/
-.button-response {
-    background-color: $red;
-    border-radius: 25px;
-    border: none;
-    box-shadow: 0 5px 0px 0px rgba(187,51,51,1);
-    color: $white;
-    font-size: 14px;
-    height: 3.5em;
-    margin-top: 1em;
-    outline: none;
-    width: 6em;
-}
-
-.button-response:focus {
-    transform: translate(0, 5px);
-    box-shadow: none;
 }
 
 .link-intro {

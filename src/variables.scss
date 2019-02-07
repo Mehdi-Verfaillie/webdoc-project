@@ -6,7 +6,7 @@
 */
     $red: #F65858;
     $white: #F8F8F8;
-    $black: #222222;
+    $black: #27282D;
     $purple-blue: #4830DA;
     $light-blue: #59F4F4;
     $yellow: #FFE660;
@@ -68,4 +68,23 @@
 @keyframes blink-caret {
   from, to { border-color: transparent }
   50% { border-color: $yellow }
+}
+
+/*Button*/
+.button {
+    background-color: $red;
+    border-radius: 25px;
+    border: none;
+    box-shadow: 0 5px 0px 0px rgba(187,51,51,1);
+    color: $white;
+    font-size: 14px;
+    height: 3.5em;
+    margin-top: 1em;
+    outline: none;
+    width: 6em;
+}
+
+.button:focus {
+    transform: translate(0, 5px);
+    box-shadow: none;
 }

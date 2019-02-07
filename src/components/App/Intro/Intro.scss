@@ -5,8 +5,6 @@
 .intro-main {
     display: flex;
     height: 100vh;
-    // background-image: url();
-    // background: $black;
     cursor: pointer;
 
     position: relative;
@@ -33,7 +31,8 @@
         align-items: center;
 
         &.last {
-            color: red;
+            font-family: $speText-font;
+            background: transparent;
         }
 
         .intro-main-container-text {

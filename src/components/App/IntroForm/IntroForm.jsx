@@ -10,6 +10,13 @@ class IntroForm extends Component {
     getAnswer = () => {
         let answer = document.querySelector('.input').value;
         this.props.get_answer(answer);
+        /** 
+         * Set default answer as 'Chaos' @String if empty
+         * */
+        
+        if (answer === '') {
+            this.props.get_answer('Chaos');
+        }
     }
     render() {
         return(
@@ -24,7 +31,7 @@ class IntroForm extends Component {
                     <div className="typewriter">
                     <h1>What does the chaos theory means for you?</h1>
                     </div>
-                    <input onBlur={() => {this.getAnswer();}} className='input' type='text' placeholder="Word chosen" maxLength="15"/>
+                    <input onBlur={() => {this.getAnswer();}} className='input' type='text' placeholder="Chaos" maxLength="15"/>
                     <Link className="link-intro" to='/intro/1'> <button className="button-response" type="button">OK</button></Link>
                 </div>
             </div>
