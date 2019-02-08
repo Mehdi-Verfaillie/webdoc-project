@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import './Intro.scss';
 import { getContent } from '../api'
 import classNames from 'classnames'
-import Waves from '../three/Waves'
+import Waves from '../scripts/Waves'
 import Dunes from '../../../assets/Dunes_intro_background.mp4'
 
 class Intro extends Component {
@@ -55,15 +55,18 @@ class Intro extends Component {
 		
 		return (
 			<div className="intro-main" onClick={() => history.replace(`/intro/${index+2}`)}>
+				{index === 3 ? (
 					<Waves className='intro-three' />
-					<div className={classNames('intro-main-container bg-overlay', { 'last': page === '4' })}>
-						<p className="intro-main-container-text">{content[index]}</p>
+				) : (
+					<div className="dunes-background">
+						<video autoPlay="true" loop="true" muted="true">
+							<source src={Dunes} type="video/mp4"></source>
+						</video>
 					</div>
-			<div className="dunes-background">
-					<video autoPlay="true" loop="true">
-				<source src={Dunes} type="video/mp4"></source>
-			</video>
-			</div>
+				)}
+				<div className={classNames('intro-main-container bg-overlay', { 'last': page === '4' })}>
+					<p className="intro-main-container-text">{content[index]}</p>
+				</div>
 			</div>
 		);
 	}
