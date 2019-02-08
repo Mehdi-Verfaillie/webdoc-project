@@ -77,11 +77,14 @@
     border: none;
     box-shadow: 0 5px 0px 0px rgba(187,51,51,1);
     color: $white;
+    font-family: $text-font;
     font-size: 14px;
     height: 3.5em;
     margin-top: 1em;
     outline: none;
     width: fit-content;
+    align-items: center;
+    display: flex;
     padding: 1em 3em;
 }
 

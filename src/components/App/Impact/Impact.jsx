@@ -65,10 +65,10 @@ class Impact extends Component {
         <VideoLayout
             videoSrc={isPageOne ? videoSrc : video2src}
             button={isPageOne ? (
-                <Link to={`/impact/${nextPage}`} className="button chaos-btn">Continue</Link>
+                <Link to={`/impact/${nextPage}`} className="button chaos-btn">CONTINUE</Link>
                 ) : (
                 <Link to='/' onClick={this.setImpactCompleted} className="button chaos-btn">
-                    Back to home
+                    BACK TO HOME
                 </Link>
             )}
         />
