@@ -1,17 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import './Chaos.scss';
 import './bulles.css';
 import Bubbles from '../scripts/Bubbles'
 import VideoLayout from '../layout/VideoLayout'
+import Waves from '../scripts/Waves'
 
 
 /**
  * @Import vidéo :p < je bave
  */
 
-import video3src from '../../../assets/video - chaos misapprehension.mp4'
+import video3src from '../../../assets/video - designer.mp4'
 
 class Chaos extends Component {
 
@@ -21,7 +22,7 @@ class Chaos extends Component {
         switch (page) {
             case '1':
                 return(
-                    <div className="chaos-main">
+                    <div className="chaos-main" style={{background: '$black'}}>
                         <div id="content">
                             <Bubbles />
                         </div>
@@ -35,33 +36,22 @@ class Chaos extends Component {
                 )
             case '2':
                 return (
-                    <div className="chaos-main">
-                        <div className="chaos-snd-container">
-                            <div className="chaos-snd-text">CHAOS</div>
+                    <Fragment>
+                        <Waves className='intro-three' />
+                        <div className="chaos-main">
+                            <div className="chaos-snd-container">
+                                <div className="chaos-snd-text">CHAOS</div>
+                            </div>
                         </div>
-                    </div>
+                    </Fragment>
                 )
             case '3':
-                    {/* <div className="chaos-main">
-                        <div className="main-thd-container">
-                            <div className="main-video-container">
-                                <video src={video3src} controls>
-                                    Votre navigateur ne gère pas l'élément <code>video</code>.
-                                </video>
-                            </div>
-                            <Link
-                                to='/'
-                                onClick={set_chaosCompleted}                                                                                                                                                                                
-                                className="button chaos-btn"
-                            >
-                                back to home
-                            </Link>
-                        </div>
-                    </div> */}
                 return (
-                    <VideoLayout
-                        videoSrc={video3src}
-                        button={
+                    <Fragment>
+                        <Waves className='intro-three' />
+                        <VideoLayout
+                            videoSrc={video3src}
+                            button={
                             <Link
                                 to='/'
                                 onClick={set_chaosCompleted}                                                                                                                                                                                
@@ -71,6 +61,7 @@ class Chaos extends Component {
                             </Link>
                         }
                     />
+                    </Fragment>
                 )                            
             default:
                 return ""

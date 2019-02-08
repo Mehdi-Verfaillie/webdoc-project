@@ -53,25 +53,26 @@ class Intro extends Component {
 		
 		const index = parseInt(page || 1) - 1
 		
-			{/* <div className="intro-main" onClick={() => history.replace(`/intro/${index+2}`)}>
-				{index === 3 ? (
-					<Waves className='intro-three' />
-				) : (
-					<div className="dunes-background">
-						<video autoPlay="true" loop="true" muted="true">
-							<source src={Dunes} type="video/mp4"></source>
-						</video>
-					</div>
-				)}
-				<div className={classNames('intro-main-container bg-overlay', { 'last': page === '4' })}>
+
+		if (index === 3) {
+			return (
+				<TypewriterLayout skip={() => history.push('/')} >
+					{content[index]}
+				</TypewriterLayout>
+			);
+		}
+		return (
+			<div className="intro-main" onClick={() => history.replace(`/intro/${index+2}`)}>
+				<div className="dunes-background">
+					<video autoPlay loop muted={true} >
+						<source src={Dunes} type="video/mp4"></source>
+					</video>
+				</div>
+				<div className={classNames('intro-main-container bg-overlay')}>
 					<p className="intro-main-container-text">{content[index]}</p>
 				</div>
-			</div> */}
-		return (
-			<TypewriterLayout skip={() => history.replace(`/intro/${index+2}`)} >
-				{content[index]}
-			</TypewriterLayout>
-		);
+			</div>
+		)
 	}
 }
 

@@ -291,15 +291,16 @@ function animate () {
   this.spheres.forEach(({ sphere, initialAlpha }, i) => 
     sphere.material.uniforms.alpha.value = alphaActive[i] ? 1.5 : initialAlpha
   )
-  // console.log(intersects)
-  const filteredIntersects = intersects.filter(intersect => intersect.object.material.type === 'RawShaderMaterial')
   
   
-  if (filteredIntersects.length) {
+  if (intersects.length) {
     document.body.style.cursor = 'pointer'
-    for (var i = 0; i < filteredIntersects.length; i++) {
-      // filteredIntersects[i].object.material.color.set('yellow');
-      filteredIntersects[i].object.material.uniforms.alpha.value = 1
+    for (var i = 0; i < intersects.length; i++) {
+      // intersects[i].object.material.color.set('yellow');
+
+      if (intersects[i].object.link === '/conclusion' && !alphaActive[0]) continue
+
+      intersects[i].object.material.uniforms.alpha.value = 1
       // filteredIntersects[i].object.material.size = 15
       // filteredIntersects[i].object.material.uniforms.texture.value = dot('hi', false, true)
 
@@ -308,6 +309,7 @@ function animate () {
   this.renderer.render(this.scene, this.camera)
   this.frameId = window.requestAnimationFrame(this.animate)
 }
+
 function onMouseMove (e) {
   this.mouse.x = ( ( e.clientX - this.renderer.domElement.offsetLeft ) / this.renderer.domElement.clientWidth ) * 2 - 1;
   this.mouse.y = - ( ( e.clientY - this.renderer.domElement.offsetTop ) / this.renderer.domElement.clientHeight ) * 2 + 1;
@@ -315,13 +317,20 @@ function onMouseMove (e) {
   this.offset.x = lerp(-2, 2, e.clientX / window.innerWidth)
   this.offset.y = lerp(2, -2, e.clientY / window.innerHeight)
 }
+
 function onMouseClick (e) {
-  var intersects = this.raycaster.intersectObjects(this.container.children);
-  const filteredIntersects = intersects.filter(intersect => intersect.object.type !== 'Line')
-  if (filteredIntersects.length) {
-    console.log('chouette')
-    console.log(filteredIntersects)
-    this.props.history.push(filteredIntersects[0].object.link)
+  const { impactCompleted, chaosCompleted, chanceCompleted } = this.props
+
+  var intersects = this.raycaster.intersectObjects(this.container.children)
+  if (intersects.length) {
+    const { link } = intersects[0].object
+
+    if (
+      link === '/conclusion' &&
+      !(impactCompleted && chaosCompleted && chanceCompleted)
+    ) return 
+      
+    this.props.history.push(link)
   }
 }
 

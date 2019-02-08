@@ -63,19 +63,22 @@ class Conclusion extends Component {
                 )
             case '2':
                     return(
-                        <div id="conclusion-content" onClick={() => history.push(`./${index + 2}`)}>
-                            <section className="video-designer-section">
-                                <div className="main-thd-container">
-                                    <div className="main-video-container">
-                                            <video src={video3src} controls>
-                                            Votre navigateur ne gère pas l'élément <code>video</code>.
-                                        </video>
+                        <Fragment>
+                            <Waves className='intro-three' />
+                            <div id="conclusion-content" onClick={() => history.push(`./${index + 2}`)}>
+                                <section className="video-designer-section">
+                                    <div className="main-thd-container">
+                                        <div className="main-video-container">
+                                                <video src={video3src} controls>
+                                                Votre navigateur ne gère pas l'élément <code>video</code>.
+                                            </video>
+                                        </div>
+                                        {/* <button className="button chaos-btn">CONTINUE</button> */}
+                                        <Link to={`/conclusion/${nextPage}`} className="button chaos-btn">CONTINUE</Link>
                                     </div>
-                                    {/* <button className="button chaos-btn">CONTINUE</button> */}
-                                    <Link to={`/conclusion/${nextPage}`} className="button chaos-btn">CONTINUE</Link>
-                                </div>
-                            </section>
-                        </div>
+                                </section>
+                            </div>
+                        </Fragment>
                     )
             case '3':
                     return(
