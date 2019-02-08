@@ -40,7 +40,7 @@ class Impact extends Component {
     const isPageOne = index === 0
 
     
-    if (content[index] === '') {
+    if (index === 0 || index === 3) {
         {/* <div className="chaos-main">
               <div className="main-thd-container">
                   <div className="main-video-container">

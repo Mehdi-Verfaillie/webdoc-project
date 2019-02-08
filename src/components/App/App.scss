@@ -19,6 +19,10 @@ body {
   position: relative;
 }
 
+p {
+  line-height: 1.5;
+}
+
 .dot {
     position: absolute;
     z-index: 100;
@@ -31,4 +35,24 @@ body {
     top: 50px;
     right: 50px;
   }
+}
+
+.typewriter {
+  font-family: $speText-font;
+  background: transparent;
+  color: $white;
+  &::after {
+      content: '|';
+      color: $red;
+      animation: blink 1s step-end infinite;
+  }
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    70% {
+        opacity: 0;
+    }
 }
