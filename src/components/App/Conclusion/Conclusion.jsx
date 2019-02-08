@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import './Conclusion.scss';
 import '../Intro/Intro.scss';
+import '../Chaos/Chaos.scss'
 import earthVideo from '../../../assets/Earth_animation.mp4';
 import {getContent} from '../api';
 import classNames from 'classnames'
 import Waves from '../scripts/Waves'
+import TypewriterLayout from '../layout/TypewriterLayout'
 
 /**
  * @Import vidéos :p
@@ -52,11 +54,11 @@ class Conclusion extends Component {
                     <div id="conclusion-content" onClick={() => history.push(`./${index + 2}`)}>
                         <section className={classNames('globe-section', { 'intro-three': page >= '3' })} ref={this.myRef}>
                             <div className={classNames('video-content', { 'hidden': page >= '2'})}>
-                                <video height="300" width="600" loop autoPlay>
+                                <video  loop autoPlay muted>
                                     <source src={earthVideo}></source>
                                 </video>
                             </div>
-                            <div><span className={classNames({ 'last': page >= '2' })}>{content[index]}</span></div>
+                            <div><span className={classNames("text-globe", { 'last': page >= '2' })}>{content[index]}</span></div>
                          </section>
                     </div>
                 )
@@ -66,7 +68,7 @@ class Conclusion extends Component {
                             <section className="video-designer-section">
                                 <div className="main-thd-container">
                                     <div className="main-video-container">
-                                            <video height="300" width="600" src={video3src} controls>
+                                            <video src={video3src} controls>
                                             Votre navigateur ne gère pas l'élément <code>video</code>.
                                         </video>
                                     </div>
@@ -78,38 +80,22 @@ class Conclusion extends Component {
                     )
             case '3':
                     return(
-                        <Fragment>
-                            <Waves className='intro-three' />
-                            <div id="conclusion-content" onClick={() => history.push(`./${index + 2}`)}>
-                                <section>
-                                    <span>{content[index]}</span>
-                                </section>
-                            </div>
-                        </Fragment>
+                        <TypewriterLayout skip={() => history.replace(`/conclusion/${index + 2}`)} >
+                            {content[index]}
+                        </TypewriterLayout>
 
                     )
             case '4':
                     return(
-                        <Fragment>
-                            <Waves className='intro-three' />
-                            <div id="conclusion-content" onClick={() => history.push(`./${index + 2}`)}>
-                                <section>
-                                    <span>{content[index]}</span>
-                                </section>
-                            </div>
-                        </Fragment>
+                        <TypewriterLayout skip={() => history.replace(`/conclusion/${index + 2}`)} >
+                            {content[index]}
+                        </TypewriterLayout>
                     )
             case '5':
                     return(
-                        <Fragment>
-                            <Waves className='intro-three' />
-                            <div id="conclusion-content">
-                                <section>
-                                    <span>{content[index]}</span>
-                                    <Link to={`/conclusion/${nextPage}`} className="button chaos-btn">END</Link>
-                                </section>
-                            </div>
-                        </Fragment>
+                        <TypewriterLayout skip={() => history.replace(`/conclusion/${index + 2}`)} >
+                            {content[index]}
+                        </TypewriterLayout>
                     )
             case '6':
                     return(
@@ -124,7 +110,7 @@ class Conclusion extends Component {
                                 <span className="S letter">S</span>
                                 <div className="input-content">
                                     <div className="typewriter">
-                                        <h1>What does the chaos theory means for you <span>now</span>?</h1>
+                                            <h1>What does the chaos theory means for you <span className="red">now</span>?</h1>
                                     </div>
                                     <Link to='/'
                                         className="button"
@@ -147,7 +133,7 @@ class Conclusion extends Component {
                             <div>
                                 <div className="input-content">
                                     <div className="typewriter">
-                                        <h1>What does the chaos theory means for you  <span>now</span>?</h1>
+                                        <h1>What does the chaos theory means for you  <span className="red">now</span>?</h1>
                                     </div>
                                     <input onBlur={() => { this.getAnswer(); }} className='input' type='text' placeholder="CHAOS" maxLength="15" />
                                     <Link 

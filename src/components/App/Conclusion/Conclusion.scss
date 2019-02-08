@@ -4,10 +4,16 @@ body {
   //  background-color: #232123;
 }
 
+video {
+    width: 100%;
+    height: 100%;
+}
+
 
 #conclusion-content {
-    width: 80%;
+    width: 60%;
     margin: auto;
+    font-family: $speText-font;
 }
 
 .video-content {
@@ -21,4 +27,24 @@ body {
 
 .last { 
     font-family: $speText-font;
+}
+
+.main-thd-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.video-designer-section {
+    transform: translate(0, 5em);
+}
+
+.text-globe {
+    font-family: $chaos-font;
+    font-weight: $chaos-weight;
+    font-size: $text-desktop-size;
+}
+
+.red {
+    color: $red;
 }
