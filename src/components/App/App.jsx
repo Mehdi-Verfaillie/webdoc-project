@@ -22,7 +22,7 @@ import Impact from './Impact/Impact';
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = { play : false};
+        this.state = { play : true};
         this.sound = BgSound;
         this.audio = new Audio(this.sound);
         this.togglePlay = this.togglePlay.bind(this);
@@ -39,7 +39,7 @@ class App extends Component {
       <div className="App">
 
 
-        <Song/>
+        {/* <Song/> */}
 
           <Sound/>
 

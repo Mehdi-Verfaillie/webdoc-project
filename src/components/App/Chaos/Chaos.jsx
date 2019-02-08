@@ -25,6 +25,8 @@ class Chaos extends Component {
                     <div className="chaos-main" style={{background: '$black'}}>
                         <div id="content">
                             <Bubbles />
+                            <div className='button'>Next</div>
+                            <Link to='/chaos/2' className='button button--special'>Next</Link>
                         </div>
                         <div className="chaos-main-container">
                             <span className="chaos-back-text">SPACE</span>
@@ -41,6 +43,7 @@ class Chaos extends Component {
                         <div className="chaos-main">
                             <div className="chaos-snd-container">
                                 <div className="chaos-snd-text">CHAOS</div>
+                                <Link to='/chaos/3' className='skipBis'>Skip</Link>
                             </div>
                         </div>
                     </Fragment>

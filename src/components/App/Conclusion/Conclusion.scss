@@ -16,10 +16,10 @@ video {
     font-family: $speText-font;
 }
 
-.video-content {
-    display: flex;
-    justify-content: center;
-}
+// .video-content {
+//     display: flex;
+//     justify-content: center;
+// }
 
 .hidden {
     display: none;
@@ -35,9 +35,9 @@ video {
     flex-wrap: wrap;
 }
 
-.video-designer-section {
-    transform: translate(0, 5em);
-}
+// .video-designer-section {
+//     transform: translate(0, 5em);
+// }
 
 .text-globe {
     font-family: $chaos-font;

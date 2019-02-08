@@ -10,7 +10,7 @@ class Home extends Component {
 	}
 
 	render() {
-		const { impactCompleted, chaosCompleted, chanceCompleted } = this.props
+		const { impactCompleted, chaosCompleted, chanceCompleted, conclusionCompleted } = this.props
 		const { showWarning } = this.state
 
 		return (
@@ -26,6 +26,9 @@ class Home extends Component {
 				{(showWarning && !(impactCompleted && chaosCompleted && chanceCompleted)) && (
 					<div className="home-main-text">You must learn other paths to understand this one.</div>
 				)}
+				{conclusionCompleted && (
+					<div className="home-main-text">Thank you for participating to this experience!</div>
+				)}
 			</div>
 		);
 	}
@@ -36,7 +39,8 @@ const mapStateToProps = (state) => {
 		answer: state.answer,
 		impactCompleted: state.impactCompleted,
 		chaosCompleted: state.chaosCompleted,
-		chanceCompleted: state.chanceCompleted
+		chanceCompleted: state.chanceCompleted,
+		conclusionCompleted: state.conclusionCompleted,
 	}
 }
 

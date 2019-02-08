@@ -7,7 +7,7 @@ const VideoLayout = ({
   <div className="chaos-main">
     <div className="main-thd-container">
       <div className="main-video-container">
-        <video src={videoSrc} controls>
+        <video src={videoSrc} className='video' controls>
           Votre navigateur ne gère pas l'élément <code>video</code>.
         </video>
       </div>
