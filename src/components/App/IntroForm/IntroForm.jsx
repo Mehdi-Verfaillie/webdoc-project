@@ -28,7 +28,7 @@ class IntroForm extends Component {
             <div>
                 <div className="input-content">
                     <div className="typewriter">
-                    <h1>What does the chaos theory means to you?</h1>
+                    <h1>What does the chaos theory mean to you?</h1>
                     </div>
                     <input onBlur={() => {this.getAnswer();}} className='input mb2' type='text' placeholder="Chaos" maxLength="15"/>
                     <Link className="link-intro" to='/intro/1'> <button className="button" type="button">OK</button></Link>

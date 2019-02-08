@@ -136,7 +136,7 @@ class Conclusion extends Component {
                             <div>
                                 <div className="input-content">
                                     <div className="typewriter">
-                                        <h1>What does the chaos theory means for you  <span className="red">now</span>?</h1>
+                                        <h1>What does the chaos theory mean to you  <span className="red">now</span>?</h1>
                                     </div>
                                     <input onBlur={() => { this.getAnswer(); }} className='input mb2' type='text' placeholder="CHAOS" maxLength="15" />
                                     <Link 
