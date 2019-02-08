@@ -5,6 +5,8 @@ import './Chaos.scss';
 import './bulles.css';
 import Bubbles from '../scripts/Bubbles'
 import VideoLayout from '../layout/VideoLayout'
+import {connect} from 'react-redux'
+import Link from 'react-router-dom'
 
 /**
  * @Import vidéo :p < je bave

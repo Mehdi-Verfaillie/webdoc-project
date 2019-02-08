@@ -3,6 +3,8 @@ import {BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.scss';
 import dotSvg from '../../assets/dot_btn.svg'
 import BgSound from '../../assets/audio/audio_cut.mp3'
+import { Link } from 'react-router-dom'
+import homeIcon from '../../assets/home_btn.svg'
 
 /**
  * @Import Components
@@ -35,10 +37,15 @@ class App extends Component {
     render() {
     return (
       <div className="App">
+
         <Song/>
           <img className="dot" src={dotSvg} alt="dot" onClick={this.togglePlay}/>
         <Router>
           <Fragment>
+            <Link to="/"> <button className="back-home hover-underline-animation ">
+              <img className="home-icon" src={homeIcon} />
+              <span className="home-icon-text">Home</span>
+              </button></Link>
             <Route path="/introForm" component={IntroForm}/>
             <Route path="/intro/:page?" component={Intro}/>
             <Route exact path="/" component={Home}/>
