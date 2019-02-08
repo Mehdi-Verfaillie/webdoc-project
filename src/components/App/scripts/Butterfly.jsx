@@ -6,20 +6,25 @@ const glsl = require('glslify')
 const { cos, sin, PI } = Math
 
 
-const Butterfly = ({ className, impactCompleted, chaosCompleted, chanceCompleted }) => {
-  return (
-    <ThreeContainer
-      init={init}
-      animate={animate}
-      onMouseMove={onMouseMove}
-      onMouseClick={onMouseClick}
-      className={className}
-      impactCompleted={impactCompleted}
-      chaosCompleted={chaosCompleted}
-      chanceCompleted={chanceCompleted}
-    />
-  )
-}
+const Butterfly = ({
+  className,
+  impactCompleted,
+  chaosCompleted,
+  chanceCompleted,
+  showWarning
+}) => (
+  <ThreeContainer
+    init={init}
+    animate={animate}
+    onMouseMove={onMouseMove}
+    onMouseClick={onMouseClick}
+    className={className}
+    impactCompleted={impactCompleted}
+    chaosCompleted={chaosCompleted}
+    chanceCompleted={chanceCompleted}
+    showWarning={showWarning}
+  />
+)
 
 function getPosition(i, offset = [0, 0, 0]) {
 	const o = 2 / (3 - cos(2 * i)) * 10
@@ -319,7 +324,7 @@ function onMouseMove (e) {
 }
 
 function onMouseClick (e) {
-  const { impactCompleted, chaosCompleted, chanceCompleted } = this.props
+  const { impactCompleted, chaosCompleted, chanceCompleted, showWarning } = this.props
 
   var intersects = this.raycaster.intersectObjects(this.container.children)
   if (intersects.length) {
@@ -328,7 +333,10 @@ function onMouseClick (e) {
     if (
       link === '/conclusion' &&
       !(impactCompleted && chaosCompleted && chanceCompleted)
-    ) return 
+    ) {
+      showWarning()
+      return
+    }
       
     this.props.history.push(link)
   }

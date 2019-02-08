@@ -6,6 +6,10 @@
     background: $black;
     height: 100vh;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 
     .home-main-title {
         padding-top: 120px;
@@ -38,7 +42,7 @@
     .home-main-text {
         width: 320px;
         text-align: center;
-        margin: auto;
+        margin-bottom: 100px;
         font-family: $speTips-font;
         font-size: $speText-mobile-size;
         font-weight: $speTips-weight;

@@ -5,8 +5,13 @@ import { connect } from 'react-redux';
 
 class Home extends Component {
 
+	state = {
+		showWarning: false
+	}
+
 	render() {
 		const { impactCompleted, chaosCompleted, chanceCompleted } = this.props
+		const { showWarning } = this.state
 
 		return (
 			<div className="home-main-container">
@@ -16,8 +21,11 @@ class Home extends Component {
 					impactCompleted={impactCompleted}
 					chaosCompleted={chaosCompleted}
 					chanceCompleted={chanceCompleted}
+					showWarning={() => this.setState({ showWarning: true })}
 				/>
-				<div className="home-main-text">You must learn other paths to understand this one.</div>
+				{(showWarning && !(impactCompleted && chaosCompleted && chanceCompleted)) && (
+					<div className="home-main-text">You must learn other paths to understand this one.</div>
+				)}
 			</div>
 		);
 	}

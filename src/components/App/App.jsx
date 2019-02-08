@@ -47,7 +47,7 @@ class App extends Component {
         <Router>
           <Fragment>
             <Link to="/"> <button className="back-home hover-underline-animation ">
-              <img className="home-icon" src={homeIcon} />
+              <img className="home-icon" src={homeIcon} alt=""/>
               <span className="home-icon-text">Home</span>
               </button></Link>
             <Route path="/introForm" component={IntroForm}/>
