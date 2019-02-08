@@ -4,7 +4,8 @@ const initState = {
     count: 0,
     impactCompleted: false,
     chaosCompleted: false,
-    chanceCompleted: false
+    chanceCompleted: false,
+    conclusionCompleted: false
 
 }
 const rootReducer = (state = initState, action) => {
@@ -45,6 +46,16 @@ const rootReducer = (state = initState, action) => {
         return {
             ...state,
             chanceCompleted: new_status
+        }
+    }
+
+    if (action.type === 'SET_CONCLUSION_COMPLETED') {
+        let new_status = action.value;
+        let new_answer = action.value;
+        return {
+            ...state,
+            conclusionCompleted: new_status,
+            answer: new_answer
         }
     }
 

@@ -59,7 +59,7 @@ class Chaos extends Component {
                     </div>
                 )                            
             default:
-                return <p>Pas de chonce</p>
+                return ""
         }
     }
 }

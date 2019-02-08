@@ -14,7 +14,7 @@ class IntroForm extends Component {
          * */
         
         if (answer === '') {
-            this.props.get_answer('Chaos');
+            this.props.get_answer('CHAOS');
         }
     }
     render() {
