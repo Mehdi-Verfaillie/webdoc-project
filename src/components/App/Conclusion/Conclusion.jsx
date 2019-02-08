@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import './Conclusion.scss';
 import '../Intro/Intro.scss';
 import '../Chaos/Chaos.scss'
-import earthVideo from '../../../assets/Earth_animation.mp4';
 import {getContent} from '../api';
 import classNames from 'classnames'
 import Waves from '../scripts/Waves'
@@ -14,6 +13,8 @@ import TypewriterLayout from '../layout/TypewriterLayout'
  * @Import vidéos :p
  */
 
+
+import earthVideo from '../../../assets/Earth-animation.gif'
  import video3src from '../../../assets/video - designer.mp4'
 
 class Conclusion extends Component {
@@ -54,9 +55,7 @@ class Conclusion extends Component {
                     <div id="conclusion-content" onClick={() => history.push(`./${index + 2}`)}>
                         <section className={classNames('globe-section', { 'intro-three': page >= '3' })} ref={this.myRef}>
                             <div className={classNames('video-content', { 'hidden': page >= '2'})}>
-                                <video  loop autoPlay muted>
-                                    <source src={earthVideo}></source>
-                                </video>
+                                <img className="img-globe" src={earthVideo} />
                             </div>
                             <div><span className={classNames("text-globe", { 'last': page >= '2' })}>{content[index]}</span></div>
                          </section>
