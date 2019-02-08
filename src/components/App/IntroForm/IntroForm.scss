@@ -1,83 +1,10 @@
 @import '../../../variables.scss';
 
-.letter {
-     color: $white;
-     font-family: $chaos-font;
-     font-size: 80px;
-     font-weight: 900;
-}
-
-/*Animation letter*/
-@keyframes MoveLetter {
- 
-0% {
-  transform: translate3D(0px, 10px, 0px);
-}
-
-25% {
-   transform: translate3D(29px, -18px, 5px);
-   text-shadow: 
-   -10px 5px 2px rgba(255, 255, 255, 0.8),
-   -20px 11px 2px rgba(255, 255, 255, 0.6),
-   -30px 14px 2px rgba(255, 255, 255, 0.2)
-}
- 
-50% {
-  transform: translate3D(15px, 8px, 5px);
-  text-shadow: 
-  6px -8px 2px rgba(255, 255, 255, 0.8),
-  10px -14px 2px rgba(255, 255, 255, 0.6),
-  15px -20px 2px rgba(255, 255, 255, 0.2);
-}
- 75% {
-  transform: translate3D(-10px, -10px, 5px);
-  text-shadow: 
-  7px 2px 2px rgba(255, 255, 255, 0.8),
-  14px 7px 2px rgba(255, 255, 255, 0.6),
-  20px 10px 2px rgba(255, 255, 255, 0.2);
-}
-
-}
-
-.C {
-    position: absolute;
-    top: 23%;
-    left: 23%;
-    animation: MoveLetter 12s ease infinite;
-}
-
-
-.H{
-    position: absolute;
-    top: 59%;
-    left: 13%;
-    animation: MoveLetter 14s ease infinite;
-}
-
-.A{
-    position: absolute;
-    bottom: 29%;
-    right: 10%;
-    animation: MoveLetter 8s ease infinite;
-}
-
-.O{
-    position: absolute;
-    bottom: 8%;
-    right: 50%;
-    animation: MoveLetter 11s ease infinite;
-}
-
-.S {
-    position: absolute;
-    top: 8%;
-    right: 30%;
-    animation: MoveLetter 10s ease infinite;
-}
 
 /*Question*/
 .typewriter h1 {
   font-size: $speText-mobile-size;
+  font-weight: 500;
   color: $white;
   overflow: hidden;
   font-family: $speText-font;
@@ -91,10 +18,6 @@
 }
 
 .typewriter {
-//   position: absolute;
-//   top: 40%; 
-//   left: 50%;
-//   transform: translate(-50%, -50%);
     width: 495px;
     margin: 0 auto 17px auto;
 }
@@ -113,10 +36,10 @@
 .input {
     border-radius: 25px;
     border: none;
-    height: 2.5em;
+    height: 40px;
     outline: none;
     text-align: center;
-    width: 335px;
+    width: 575px;
     @media (min-width: 1366px) {
         width: 30em;
     }

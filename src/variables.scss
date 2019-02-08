@@ -81,7 +81,8 @@
     height: 3.5em;
     margin-top: 1em;
     outline: none;
-    width: 6em;
+    width: fit-content;
+    padding: 1em 3em;
 }
 
 .button:focus {
@@ -97,4 +98,80 @@
 
 .bg-overlay {
     background-color: rgba(42, 42, 42, 0.4);
+}
+
+/******LETTERS*****/
+.letter {
+     color: $white;
+     font-family: $chaos-font;
+     font-size: 80px;
+     font-weight: 900;
+}
+
+/*Animation letter*/
+@keyframes MoveLetter {
+ 
+0% {
+  transform: translate3D(0px, 10px, 0px);
+}
+
+25% {
+   transform: translate3D(29px, -18px, 5px);
+   text-shadow: 
+   -10px 5px 2px rgba(255, 255, 255, 0.8),
+   -20px 11px 2px rgba(255, 255, 255, 0.6),
+   -30px 14px 2px rgba(255, 255, 255, 0.2)
+}
+ 
+50% {
+  transform: translate3D(15px, 8px, 5px);
+  text-shadow: 
+  6px -8px 2px rgba(255, 255, 255, 0.8),
+  10px -14px 2px rgba(255, 255, 255, 0.6),
+  15px -20px 2px rgba(255, 255, 255, 0.2);
+}
+ 75% {
+  transform: translate3D(-10px, -10px, 5px);
+  text-shadow: 
+  7px 2px 2px rgba(255, 255, 255, 0.8),
+  14px 7px 2px rgba(255, 255, 255, 0.6),
+  20px 10px 2px rgba(255, 255, 255, 0.2);
+}
+
+}
+
+.C {
+    position: absolute;
+    top: 23%;
+    left: 23%;
+    animation: MoveLetter 12s ease infinite;
+}
+
+
+.H{
+    position: absolute;
+    top: 59%;
+    left: 13%;
+    animation: MoveLetter 14s ease infinite;
+}
+
+.A{
+    position: absolute;
+    bottom: 29%;
+    right: 10%;
+    animation: MoveLetter 8s ease infinite;
+}
+
+.O{
+    position: absolute;
+    bottom: 8%;
+    right: 50%;
+    animation: MoveLetter 11s ease infinite;
+}
+
+.S {
+    position: absolute;
+    top: 8%;
+    right: 30%;
+    animation: MoveLetter 10s ease infinite;
 }
