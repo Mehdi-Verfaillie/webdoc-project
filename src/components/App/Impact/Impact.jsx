@@ -4,7 +4,8 @@ import { getContent } from '../api'
 import '../Chaos/Chaos.scss'
 import Waves from '../scripts/Waves'
 import { connect } from 'react-redux'
-
+import VideoLayout from '../layout/VideoLayout'
+import TypewriterLayout from '../layout/TypewriterLayout'
 /**
  * @Import vidéos :p
  */
@@ -30,7 +31,7 @@ class Impact extends Component {
   }
 
   render () {
-    const { match: { params: { page = 1 } } } = this.props
+    const { match: { params: { page = 1 } }, history } = this.props
     const { content } = this.state
 
     const index = parseInt(page) - 1
@@ -39,9 +40,8 @@ class Impact extends Component {
     const isPageOne = index === 0
 
     
-    if (content[index] === '') {
-      return (
-          <div className="chaos-main">
+    if (index === 0 || index === 3) {
+        {/* <div className="chaos-main">
               <div className="main-thd-container">
                   <div className="main-video-container">
                       <video src={isPageOne ? videoSrc : video2src} controls>
@@ -60,16 +60,30 @@ class Impact extends Component {
                     </Link>
                   )}
               </div>
-          </div>
+          </div> */}
+      return (
+        <VideoLayout
+            videoSrc={isPageOne ? videoSrc : video2src}
+            button={isPageOne ? (
+                <Link to={`/impact/${nextPage}`} className="button chaos-btn">Continue</Link>
+                ) : (
+                <Link to='/' onClick={this.setImpactCompleted} className="button chaos-btn">
+                    Back to home
+                </Link>
+            )}
+        />
       )
     }
-    return (
-      <div className="intro-main">
+      {/* <div className="intro-main">
         <Waves className='intro-three' />
         <div className="intro-main-container">
           <p className="intro-main-container-text typewriter">{content[index]}</p>
         </div>
-	    </div>
+    </div> */}
+    return (
+        <TypewriterLayout skip={() => history.replace(`/impact/${nextPage}`)} >
+            {content[index]}
+        </TypewriterLayout>
     )        
 
   }

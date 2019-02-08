@@ -5,7 +5,7 @@ import { getContent } from '../api'
 import classNames from 'classnames'
 import Waves from '../scripts/Waves'
 import Dunes from '../../../assets/Dunes_intro_background.mp4'
-
+import TypewriterLayout from '../layout/TypewriterLayout'
 class Intro extends Component {
   
 	constructor (props) {
@@ -53,8 +53,7 @@ class Intro extends Component {
 		
 		const index = parseInt(page || 1) - 1
 		
-		return (
-			<div className="intro-main" onClick={() => history.replace(`/intro/${index+2}`)}>
+			{/* <div className="intro-main" onClick={() => history.replace(`/intro/${index+2}`)}>
 				{index === 3 ? (
 					<Waves className='intro-three' />
 				) : (
@@ -67,7 +66,11 @@ class Intro extends Component {
 				<div className={classNames('intro-main-container bg-overlay', { 'last': page === '4' })}>
 					<p className="intro-main-container-text">{content[index]}</p>
 				</div>
-			</div>
+			</div> */}
+		return (
+			<TypewriterLayout skip={() => history.replace(`/intro/${index+2}`)} >
+				{content[index]}
+			</TypewriterLayout>
 		);
 	}
 }

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import './Chaos.scss';
 import './bulles.css';
 import Bubbles from '../scripts/Bubbles'
+import VideoLayout from '../layout/VideoLayout'
 
 /**
  * @Import vidéo :p < je bave
@@ -40,8 +41,7 @@ class Chaos extends Component {
                     </div>
                 )
             case '3':
-                return (
-                    <div className="chaos-main">
+                    {/* <div className="chaos-main">
                         <div className="main-thd-container">
                             <div className="main-video-container">
                                 <video src={video3src} controls>
@@ -56,7 +56,20 @@ class Chaos extends Component {
                                 back to home
                             </Link>
                         </div>
-                    </div>
+                    </div> */}
+                return (
+                    <VideoLayout
+                        videoSrc={video3src}
+                        button={
+                            <Link
+                                to='/'
+                                onClick={set_chaosCompleted}                                                                                                                                                                                
+                                className="button chaos-btn"
+                            >
+                                back to home
+                            </Link>
+                        }
+                    />
                 )                            
             default:
                 return ""
