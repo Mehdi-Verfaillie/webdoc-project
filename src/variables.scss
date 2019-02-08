@@ -79,13 +79,18 @@
     color: $white;
     font-family: $text-font;
     font-size: 14px;
-    height: 3.5em;
     margin-top: 1em;
     outline: none;
     width: fit-content;
     align-items: center;
     display: flex;
+    margin: auto;
     padding: 1em 3em;
+    text-decoration: none;
+    &--special {
+        position: absolute;
+        opacity: 0;
+    }
 }
 
 .button:focus {
@@ -177,4 +182,45 @@
     top: 8%;
     right: 30%;
     animation: MoveLetter 10s ease infinite;
+}
+
+.skip-btn {
+    background: none;
+    color: $white; 
+    border: none;
+    text-decoration: underline;
+    font-size: 18px;
+    letter-spacing: 4px;
+    position: relative;
+    bottom: 0;
+    height: fit-content;
+    margin: auto 100px 100px;
+}
+
+.chaos-main {
+    .main-thd-container {
+        .main-video-container {
+            height: fit-content;
+            height: 232px;
+            width: 90%;
+            border: none;
+            display: flex;
+            margin: 0 auto 50px auto;
+
+            @media (min-width: 1366px) {
+                height: 450px;
+                width: 60%;
+                background: black;
+            }
+
+            .video {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
+
+.mb2 {
+    margin-bottom: 20px
 }

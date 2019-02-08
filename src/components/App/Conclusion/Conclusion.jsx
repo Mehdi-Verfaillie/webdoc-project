@@ -28,6 +28,7 @@ class Conclusion extends Component {
     async componentDidMount () {
         const content = await getContent('conclusion')
         this.setState({ content })
+        this.props.set_conclusionCompleted('CHAOS');
     }
         
     getAnswer = () => {
@@ -52,7 +53,7 @@ class Conclusion extends Component {
         switch (page) {
             case '1':
                 return(
-                    <div id="conclusion-content" onClick={() => history.push(`./${index + 2}`)}>
+                    <div id="conclusion-content" onClick={() => history.push(`/conclusion/${index + 2}`)}>
                         <section className={classNames('globe-section', { 'intro-three': page >= '3' })} ref={this.myRef}>
                             <div className={classNames('video-content', { 'hidden': page >= '2'})}>
                                 <img className="img-globe" src={earthVideo} />
@@ -63,19 +64,22 @@ class Conclusion extends Component {
                 )
             case '2':
                     return(
-                        <div id="conclusion-content" onClick={() => history.push(`./${index + 2}`)}>
-                            <section className="video-designer-section">
-                                <div className="main-thd-container">
-                                    <div className="main-video-container">
-                                            <video src={video3src} controls>
-                                            Votre navigateur ne gère pas l'élément <code>video</code>.
-                                        </video>
+                        <Fragment>
+                            <Waves className='intro-three' />
+                            <div id="conclusion-content" onClick={() => history.push(`./${index + 2}`)}>
+                                <section className="video-designer-section">
+                                    <div className="main-thd-container">
+                                        <div className="main-video-container mb2">
+                                                <video className="video" src={video3src} controls>
+                                                Votre navigateur ne gère pas l'élément <code>video</code>.
+                                            </video>
+                                        </div>
+                                        {/* <button className="button chaos-btn">CONTINUE</button> */}
+                                        <Link to={`/conclusion/${nextPage}`} className="button chaos-btn">CONTINUE</Link>
                                     </div>
-                                    {/* <button className="button chaos-btn">CONTINUE</button> */}
-                                    <Link to={`/conclusion/${nextPage}`} className="button chaos-btn">CONTINUE</Link>
-                                </div>
-                            </section>
-                        </div>
+                                </section>
+                            </div>
+                        </Fragment>
                     )
             case '3':
                     return(
@@ -112,7 +116,7 @@ class Conclusion extends Component {
                                             <h1>What does the chaos theory means for you <span className="red">now</span>?</h1>
                                     </div>
                                     <Link to='/'
-                                        className="button"
+                                        className="button mb2"
                                     >SAME AS BEFORE</Link>
                                     <Link to={`/conclusion/${nextPage}`} className="button">DIFFERENT</Link>
                                 </div>
@@ -134,7 +138,7 @@ class Conclusion extends Component {
                                     <div className="typewriter">
                                         <h1>What does the chaos theory means for you  <span className="red">now</span>?</h1>
                                     </div>
-                                    <input onBlur={() => { this.getAnswer(); }} className='input' type='text' placeholder="CHAOS" maxLength="15" />
+                                    <input onBlur={() => { this.getAnswer(); }} className='input mb2' type='text' placeholder="CHAOS" maxLength="15" />
                                     <Link 
                                         to='/'
                                         className="button"

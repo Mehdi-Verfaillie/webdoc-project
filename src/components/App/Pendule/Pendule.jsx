@@ -2,8 +2,15 @@ import React, { Component } from 'react';
 import './Pendule.scss';
 import gearwheel from '../../../assets/gearWheel.png';
 import pendulumGif from '../../../assets/video-pendulum.mp4'
+import { connect } from 'react-redux'
 
 class Pendule extends Component {
+
+    componentDidMount () {
+        const { set_chanceCompleted } = this.props
+        set_chanceCompleted()
+    }
+
     render() {
         return(
             <div className="pendule-main">
@@ -30,4 +37,8 @@ class Pendule extends Component {
     }
 }
 
-export default Pendule;
+const mapDispatchToProps = (dispatch) => ({
+    set_chanceCompleted: () => dispatch({ type: 'SET_CHANCE_COMPLETED', value: true })
+})
+
+export default connect(null, mapDispatchToProps)(Pendule)

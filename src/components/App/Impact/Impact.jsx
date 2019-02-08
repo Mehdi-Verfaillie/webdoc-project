@@ -41,45 +41,19 @@ class Impact extends Component {
 
     
     if (index === 0 || index === 3) {
-        {/* <div className="chaos-main">
-              <div className="main-thd-container">
-                  <div className="main-video-container">
-                      <video src={isPageOne ? videoSrc : video2src} controls>
-                          Votre navigateur ne gère pas l'élément <code>video</code>.
-                      </video>
-                  </div>
-                  {isPageOne ? (
-                    <Link to={`/impact/${nextPage}`} className="button chaos-btn">Continue</Link>
-                  ) : (
-                    <Link
-                        to='/'
-                        className="button chaos-btn"
-                        onClick={this.setImpactCompleted}
-                    >
-                        Back to home
-                    </Link>
-                  )}
-              </div>
-          </div> */}
       return (
         <VideoLayout
             videoSrc={isPageOne ? videoSrc : video2src}
             button={isPageOne ? (
-                <Link to={`/impact/${nextPage}`} className="button chaos-btn">CONTINUE</Link>
+                <Link to={`/impact/${nextPage}`} className="button">CONTINUE</Link>
                 ) : (
-                <Link to='/' onClick={this.setImpactCompleted} className="button chaos-btn">
+                <Link to='/' onClick={this.setImpactCompleted} className="button">
                     BACK TO HOME
                 </Link>
             )}
         />
       )
     }
-      {/* <div className="intro-main">
-        <Waves className='intro-three' />
-        <div className="intro-main-container">
-          <p className="intro-main-container-text typewriter">{content[index]}</p>
-        </div>
-    </div> */}
     return (
         <TypewriterLayout skip={() => history.replace(`/impact/${nextPage}`)} >
             {content[index]}

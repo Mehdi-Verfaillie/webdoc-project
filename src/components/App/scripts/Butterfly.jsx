@@ -6,20 +6,25 @@ const glsl = require('glslify')
 const { cos, sin, PI } = Math
 
 
-const Butterfly = ({ className, impactCompleted, chaosCompleted, chanceCompleted }) => {
-  return (
-    <ThreeContainer
-      init={init}
-      animate={animate}
-      onMouseMove={onMouseMove}
-      onMouseClick={onMouseClick}
-      className={className}
-      impactCompleted={impactCompleted}
-      chaosCompleted={chaosCompleted}
-      chanceCompleted={chanceCompleted}
-    />
-  )
-}
+const Butterfly = ({
+  className,
+  impactCompleted,
+  chaosCompleted,
+  chanceCompleted,
+  showWarning
+}) => (
+  <ThreeContainer
+    init={init}
+    animate={animate}
+    onMouseMove={onMouseMove}
+    onMouseClick={onMouseClick}
+    className={className}
+    impactCompleted={impactCompleted}
+    chaosCompleted={chaosCompleted}
+    chanceCompleted={chanceCompleted}
+    showWarning={showWarning}
+  />
+)
 
 function getPosition(i, offset = [0, 0, 0]) {
 	const o = 2 / (3 - cos(2 * i)) * 10
@@ -189,10 +194,10 @@ function init () {
   })
 
   this.spheres = [
-    { text: '', 				  link: '/conclusion' , initialColor: [1.0, 1.0, 1.0] 		 , size: 1.5,  initialAlpha: 0.4, offset: PI / 2	},
-    { text: 'chaos ?', 	  link: '/chaos' , initialColor: [0.964, 0.345, 0.345], size: 1,    initialAlpha: 0.6, offset: 2 	    },
-    { text: 'impact ?', 	link: '/impact' , initialColor: [0.964, 0.345, 0.345], size: 1,    initialAlpha: 0.6, offset: 4	    },
-    { text: 'chance ?', 	link: '/chance' , initialColor: [0.964, 0.345, 0.345], size: 1,    initialAlpha: 0.6, offset: 6 	    },
+    { text: '', 				  link: '/conclusion' , initialColor: [1.0, 1.0, 1.0] , size: 1.5,  initialAlpha: 0.4, offset: PI / 2	},
+    { text: 'chaos ?', 	  link: '/chaos' , initialColor: [0.964, 0.345, 0.345], size: 1,    initialAlpha: 0.4, offset: 2 	    },
+    { text: 'impact ?', 	link: '/impact' , initialColor: [0.964, 0.345, 0.345], size: 1,   initialAlpha: 0.4, offset: 4	    },
+    { text: 'chance ?', 	link: '/chance' , initialColor: [0.964, 0.345, 0.345], size: 1,   initialAlpha: 0.4, offset: 6 	    },
   ].map(({ text, initialColor, offset, size, initialAlpha, link }, i) => {
 
     const positions = [...getPosition(offset)]
@@ -291,15 +296,16 @@ function animate () {
   this.spheres.forEach(({ sphere, initialAlpha }, i) => 
     sphere.material.uniforms.alpha.value = alphaActive[i] ? 1.5 : initialAlpha
   )
-  // console.log(intersects)
-  const filteredIntersects = intersects.filter(intersect => intersect.object.material.type === 'RawShaderMaterial')
   
   
-  if (filteredIntersects.length) {
+  if (intersects.length) {
     document.body.style.cursor = 'pointer'
-    for (var i = 0; i < filteredIntersects.length; i++) {
-      // filteredIntersects[i].object.material.color.set('yellow');
-      filteredIntersects[i].object.material.uniforms.alpha.value = 1
+    for (var i = 0; i < intersects.length; i++) {
+      // intersects[i].object.material.color.set('yellow');
+
+      if (intersects[i].object.link === '/conclusion' && !alphaActive[0]) continue
+
+      intersects[i].object.material.uniforms.alpha.value = 1
       // filteredIntersects[i].object.material.size = 15
       // filteredIntersects[i].object.material.uniforms.texture.value = dot('hi', false, true)
 
@@ -308,6 +314,7 @@ function animate () {
   this.renderer.render(this.scene, this.camera)
   this.frameId = window.requestAnimationFrame(this.animate)
 }
+
 function onMouseMove (e) {
   this.mouse.x = ( ( e.clientX - this.renderer.domElement.offsetLeft ) / this.renderer.domElement.clientWidth ) * 2 - 1;
   this.mouse.y = - ( ( e.clientY - this.renderer.domElement.offsetTop ) / this.renderer.domElement.clientHeight ) * 2 + 1;
@@ -315,13 +322,23 @@ function onMouseMove (e) {
   this.offset.x = lerp(-2, 2, e.clientX / window.innerWidth)
   this.offset.y = lerp(2, -2, e.clientY / window.innerHeight)
 }
+
 function onMouseClick (e) {
-  var intersects = this.raycaster.intersectObjects(this.container.children);
-  const filteredIntersects = intersects.filter(intersect => intersect.object.type !== 'Line')
-  if (filteredIntersects.length) {
-    console.log('chouette')
-    console.log(filteredIntersects)
-    this.props.history.push(filteredIntersects[0].object.link)
+  const { impactCompleted, chaosCompleted, chanceCompleted, showWarning } = this.props
+
+  var intersects = this.raycaster.intersectObjects(this.container.children)
+  if (intersects.length) {
+    const { link } = intersects[0].object
+
+    if (
+      link === '/conclusion' &&
+      !(impactCompleted && chaosCompleted && chanceCompleted)
+    ) {
+      showWarning()
+      return
+    }
+      
+    this.props.history.push(link)
   }
 }
 

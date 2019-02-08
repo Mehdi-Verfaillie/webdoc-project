@@ -22,7 +22,7 @@ import Impact from './Impact/Impact';
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = { play : false};
+        this.state = { play : true};
         this.sound = BgSound;
         this.audio = new Audio(this.sound);
         this.togglePlay = this.togglePlay.bind(this);
@@ -39,7 +39,7 @@ class App extends Component {
       <div className="App">
 
 
-        <Song/>
+        {/* <Song/> */}
 
           <Sound/>
 
@@ -47,14 +47,14 @@ class App extends Component {
         <Router>
           <Fragment>
             <Link to="/"> <button className="back-home hover-underline-animation ">
-              <img className="home-icon" src={homeIcon} />
+              <img className="home-icon" src={homeIcon} alt=""/>
               <span className="home-icon-text">Home</span>
               </button></Link>
             <Route path="/introForm" component={IntroForm}/>
             <Route path="/intro/:page?" component={Intro}/>
             <Route exact path="/" component={Home}/>
             <Route path="/chaos/:page?" component={Chaos}/>
-            <Route path="/pendule" component={Pendule}/>
+            <Route path="/chance" component={Pendule}/>
             <Route path="/conclusion/:page?" component={Conclusion} />
             <Route path="/impact/:page?" component={Impact} />
           </Fragment>
