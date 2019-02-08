@@ -32,3 +32,50 @@ body {
     right: 50px;
   }
 }
+
+.back-home {
+   border: none ; 
+background: transparent;
+outline: none;
+}
+
+.home-icon-text {
+  display: none;
+font-size:  $text-mobile-size;
+font-family: $speText-font;
+color: $white;
+}
+
+.hover-underline-animation:hover, .home-icon-text:hover::after {
+display: inline-flex;
+}
+
+.hover-underline-animation {
+      z-index: 10;
+    display: inline-block;
+    position: absolute;
+    left: 50px;
+    top: 50px;
+    color: #F8F8F8;
+}
+.hover-underline-animation::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: $white;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+.hover-underline-animation:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.home-icon {
+  width: 50px;
+  margin-right: 7px;
+}

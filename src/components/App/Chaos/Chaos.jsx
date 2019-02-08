@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './Chaos.scss';
 import './bulles.css';
 import vis from 'vis';
+import {connect} from 'react-redux'
+import Link from 'react-router-dom'
 
 class Chaos extends Component {
     constructor(props) {
