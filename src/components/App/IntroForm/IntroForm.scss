@@ -4,7 +4,7 @@
 /*Question*/
 .typewriter h1 {
   font-size: $speText-mobile-size;
-  font-weight: 500;
+  font-weight: 400;
   color: $white;
   overflow: hidden;
   font-family: $speText-font;
@@ -41,7 +41,7 @@
     text-align: center;
     width: 575px;
     @media (min-width: 1366px) {
-        width: 30em;
+        width: 575px;
     }
 }
 
