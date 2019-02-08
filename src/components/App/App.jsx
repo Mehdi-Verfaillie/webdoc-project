@@ -5,6 +5,7 @@ import dotSvg from '../../assets/dot_btn.svg'
 import BgSound from '../../assets/audio/audio_cut.mp3'
 import { Link } from 'react-router-dom'
 import homeIcon from '../../assets/home_btn.svg'
+import Sound from 'react-sound'
 
 /**
  * @Import Components
@@ -25,7 +26,6 @@ class App extends Component {
         this.sound = BgSound;
         this.audio = new Audio(this.sound);
         this.togglePlay = this.togglePlay.bind(this);
-
     }
 
     togglePlay(){
@@ -38,7 +38,11 @@ class App extends Component {
     return (
       <div className="App">
 
+
         <Song/>
+
+          <Sound/>
+
           <img className="dot" src={dotSvg} alt="dot" onClick={this.togglePlay}/>
         <Router>
           <Fragment>
