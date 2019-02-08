@@ -178,3 +178,16 @@
     right: 30%;
     animation: MoveLetter 10s ease infinite;
 }
+
+.skip-btn {
+    background: none;
+    color: $white; 
+    border: none;
+    text-decoration: underline;
+    font-size: 18px;
+    letter-spacing: 4px;
+    position: relative;
+    bottom: 0;
+    height: fit-content;
+    margin: auto 20px 100px;
+}

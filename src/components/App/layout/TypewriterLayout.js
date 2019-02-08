@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Waves from '../scripts/Waves'
 import { withRouter } from 'react-router-dom'
+import '../../../variables.scss'
 
 class TypewriterLayout extends Component {
 
@@ -39,7 +40,7 @@ class TypewriterLayout extends Component {
             {children.slice(0, count)}
           </p>
         </div>
-        <button onClick={skip}>Skip</button>
+        <button className="skip-btn" onClick={skip}>Skip</button>
       </div>
     )
   }

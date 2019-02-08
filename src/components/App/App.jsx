@@ -54,7 +54,7 @@ class App extends Component {
             <Route path="/intro/:page?" component={Intro}/>
             <Route exact path="/" component={Home}/>
             <Route path="/chaos/:page?" component={Chaos}/>
-            <Route path="/pendule" component={Pendule}/>
+            <Route path="/chance" component={Pendule}/>
             <Route path="/conclusion/:page?" component={Conclusion} />
             <Route path="/impact/:page?" component={Impact} />
           </Fragment>

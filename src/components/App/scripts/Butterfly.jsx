@@ -194,10 +194,10 @@ function init () {
   })
 
   this.spheres = [
-    { text: '', 				  link: '/conclusion' , initialColor: [1.0, 1.0, 1.0] 		 , size: 1.5,  initialAlpha: 0.4, offset: PI / 2	},
-    { text: 'chaos ?', 	  link: '/chaos' , initialColor: [0.964, 0.345, 0.345], size: 1,    initialAlpha: 0.6, offset: 2 	    },
-    { text: 'impact ?', 	link: '/impact' , initialColor: [0.964, 0.345, 0.345], size: 1,    initialAlpha: 0.6, offset: 4	    },
-    { text: 'chance ?', 	link: '/chance' , initialColor: [0.964, 0.345, 0.345], size: 1,    initialAlpha: 0.6, offset: 6 	    },
+    { text: '', 				  link: '/conclusion' , initialColor: [1.0, 1.0, 1.0] , size: 1.5,  initialAlpha: 0.4, offset: PI / 2	},
+    { text: 'chaos ?', 	  link: '/chaos' , initialColor: [0.964, 0.345, 0.345], size: 1,    initialAlpha: 0.4, offset: 2 	    },
+    { text: 'impact ?', 	link: '/impact' , initialColor: [0.964, 0.345, 0.345], size: 1,   initialAlpha: 0.4, offset: 4	    },
+    { text: 'chance ?', 	link: '/chance' , initialColor: [0.964, 0.345, 0.345], size: 1,   initialAlpha: 0.4, offset: 6 	    },
   ].map(({ text, initialColor, offset, size, initialAlpha, link }, i) => {
 
     const positions = [...getPosition(offset)]
